@@ -1,0 +1,20 @@
+{% extends 'layout.jinja' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Edit Post{% endblock %}
+
+{% block content %}
+    <div class="bg-main">
+        <div class="container w-75"><br><br>
+            <a href="/profile/"><i class="bi bi-arrow-return-left"></i> Return to profile</a>
+            <h1>Edit Post</h1>
+            <form enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+                {{form.media}}
+                {{form|crispy}}
+
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </div>
+    </div>
+{% endblock%}

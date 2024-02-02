@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+    font-family: Poppins !important;
+}
+
+.navbar {
+    margin: 0px !important;
+    padding: 0px !important;
+    border-bottom: 1px solid rgb(184, 184, 184);
+}
+
+.bg-main {
+    background-color: rgb(245, 245, 245) !important;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.jumbotron {
+    background: none !important;
+}
+
+.btn-primary {
+    background-color: rgb(69, 107, 165) !important;
+    border-color: rgb(69, 107, 165) !important;
+    color: #fafafa;
+    padding: 10px !important;
+    border-radius: 0px !important;
+}
+
+.bg-gray {
+    --bs-bg-opacity: 1;
+    background-color: #FF7F50 !important;
+}
+.card {
+    box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
+    border-radius: 0px !important;
+    border: none !important;
+}
+
+.main-search {
+    padding: 10px !important;
+    border-radius: 0px !important;
+}
+
+.btn-sm {
+    padding: 5px !important;
+}
+
+.badge {
+    padding: 7px !important;
+    border-radius: 0px !important;
+}
+
+.badge-admin {
+    background-color: #CB4335 !important;
+    color: #fafafa !important;
+}
+
+.badge-user {
+    background-color: #5499C7 !important;
+    color: #fafafa !important;
+}

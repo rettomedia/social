@@ -1,0 +1,92 @@
+{% extends 'layout.jinja' %}
+{% load static %}
+{% block title %}Network{% endblock %}
+
+{% block content %}
+<div class="container-fluid gedf-wrapper"><br>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <form action="{% url 'index' %}" class="d-flex">
+                        <input name="search" type="search" class="form-control main-search" placeholder="Search">
+                    </form>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div class="h6 text-muted">Session</div>
+                        <div>{{request.user.username}}</div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="h6 text-muted">Rank</div>
+                        {% if request.user.username == "ekin" %}
+                        <div><span class="badge badge-admin">Owner</span></div>
+                        {% else %}
+                        <div><span class="badge badge-user">User</span></div>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6 gedf-main">
+            {% for post in posts %}
+            <div class="card gedf-card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="mr-2">
+                                {% if post.author.avatar %}
+                                <img class="rounded-circle" width="45" src="{{post.author.avatar.url}}" alt="">
+                                {% else %}
+                                <img class="rounded-circle" width="45" src="{% static 'images/blank.avif' %}" alt="">
+                                {% endif %}
+                            </div>
+                            <div class="ml-2">
+                                <div class="h5 m-0"><a href="/@{{post.author.username}}/" class="text-dark">{{post.author.username}}</a></div>
+                                <div class="h7 text-muted">{{post.edited_at}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <a class="card-link" href="/@{{post.author.username}}/{{post.slug}}/">
+                        <h5 class="card-title">{{post.title}}</h5>
+                    </a>
+
+                    <p class="card-text">
+                        {{post.media}}
+                        {{post.content|safe}}
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="card-link"><i class="bi bi-chat-dots-fill"></i> Comment</a>
+                    <a href="#" class="card-link"><i class="bi bi-share-fill"></i> Share</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-3">
+            <div class="card gedf-card">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+            <div class="card gedf-card">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

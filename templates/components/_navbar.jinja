@@ -1,0 +1,53 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container col-10">
+        <a class="navbar-brand" href="/">
+            <img src="{% static 'images/social.png' %}" height="70">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/how-it-works/">How It Works</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/pricing/">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/support/">Support</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                {% if request.user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {% if request.user.avatar %}
+                        <img src="{{request.user.avatar.url}}" width="40" height="40" style="border-radius: 100%;">
+                        {% else %}
+                        <img src="{% static 'images/blank.avif' %}" width="40" height="40" style="border-radius: 100%;">
+                        {% endif %}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/profile/">Profile</a>
+                        <a class="dropdown-item" href="/profile/settings/">Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/logout/">Logout</a>
+                    </div>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/login/">Sign In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/signup/">Create Account</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

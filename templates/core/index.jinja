@@ -1,0 +1,183 @@
+{% extends "layout.jinja" %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'styles/group.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="bg-main">
+    <div class="container col-10">
+        <div class="jumbotron">
+            <h1 class="display-4"><strong>The ultime social hub<br>for everyone.</strong></h1>
+            <p class="lead">Unleash your true self in a world of boundless entertainment and freedom.</p>
+            <hr class="my-4">
+            <p><img src="{% static 'images/social.png' %}" height="40"> powered by <a
+                    href="https://rettomedia.com">Retto Media™</a></p>
+            <p class="lead">
+                <a class="btn btn-primary" href="/signup/" role="button">Join for Free</a>
+            </p>
+        </div>
+    </div>
+</div>
+<div><br><br>
+    <div class="container">
+        <h1 align="center">Breaking chains, building thrills.</h1>
+        <h5 align="center"><span class="text-secondary">Retto Social provides a size freedom-oriented and secure social
+                platform.</span></h5>
+    </div><br>
+    <div class="row align-items-center justify-content-center">
+        <div class="col-xl-5 mb-3 mb-lg-5">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex flex-column text-center align-items-center">
+
+                        <div class="flex-grow-1 pt-4">
+                            <span class="d-block text-muted"><small>News, posts and more.</small></span>
+                            <h5>Retto Official</h5>
+                            <div class="mb-4">
+                                <span class="badge rounded-pill bg-success">Official</span>
+                            </div>
+                            <div class="avatar-group">
+                                <a href="#!.html" class="avatar-group-item avatar sm rounded-circle"
+                                    data-tippy-placement="top" data-tippy-content="Gabriel H">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="..."
+                                        class="avatar-group-img rounded-circle" />
+                                </a>
+                                <a href="#!.html" class="avatar-group-item avatar sm rounded-circle"
+                                    data-tippy-placement="top" data-tippy-content="Emily Doe">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="..."
+                                        class="avatar-group-img rounded-circle" />
+                                </a>
+                                <a href="#!.html" class="avatar-group-item avatar sm rounded-circle"
+                                    data-tippy-placement="top" data-tippy-content="Adam Howkins">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="..."
+                                        class="avatar-group-img rounded-circle" />
+                                </a>
+                                <a href="#!.html"
+                                    class="avatar-group-item d-flex align-items-center justify-content-center bg-gray text-body avatar sm rounded-circle"
+                                    data-tippy-placement="top" data-tippy-content="6 more members">
+                                    <b>+6</b>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Footer states-->
+                <div class="card-footer py-0 border-top">
+                    <div class="row">
+                        <div class="col text-center p-3">
+                            <h4 class="fs-5 mb-1">218</h4>
+                            <span class="d-block font-size-sm">Member</span>
+                        </div>
+
+                        <div class="col p-3 text-center border-end border-start">
+                            <h4 class="fs-5 mb-1">468</h4>
+                            <span class="d-block font-size-sm">Posts</span>
+                        </div>
+
+                        <div class="col p-3 text-center">
+                            <span class="d-block font-size-sm"><a class="btn btn-primary text-light btn-sm">Join
+                                    Group</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-5 mb-3 mb-lg-5">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex flex-column text-center align-items-center">
+                        <div class="flex-grow-1 pt-4">
+                            <span class="d-block text-muted"><small>Development processes for Retto</small></span>
+                            <h5>Retto for Devs</h5>
+                            <div class="mb-4">
+                                <span class="badge rounded-pill bg-success">Community</span>
+                            </div>
+                            <div class="avatar-group">
+                                <a href="#!.html" class="avatar-group-item avatar sm rounded-circle"
+                                    data-tippy-placement="top" data-tippy-content="Gabriel H">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="..."
+                                        class="avatar-group-img rounded-circle" />
+                                </a>
+                                <a href="#!.html" class="avatar-group-item avatar sm rounded-circle"
+                                    data-tippy-placement="top" data-tippy-content="Emily Doe">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="..."
+                                        class="avatar-group-img rounded-circle" />
+                                </a>
+                                <a href="#!.html" class="avatar-group-item avatar sm rounded-circle"
+                                    data-tippy-placement="top" data-tippy-content="Adam Howkins">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="..."
+                                        class="avatar-group-img rounded-circle" />
+                                </a>
+                                <a href="#!.html"
+                                    class="avatar-group-item d-flex align-items-center justify-content-center bg-gray text-body avatar sm rounded-circle"
+                                    data-tippy-placement="top" data-tippy-content="6 more members">
+                                    <b>+6</b>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Footer states-->
+                <div class="card-footer py-0 border-top">
+                    <div class="row">
+                        <div class="col text-center p-3">
+                            <h4 class="fs-5 mb-1">218</h4>
+                            <span class="d-block font-size-sm">Member</span>
+                        </div>
+
+                        <div class="col p-3 text-center border-end border-start">
+                            <h4 class="fs-5 mb-1">468</h4>
+                            <span class="d-block font-size-sm">Posts</span>
+                        </div>
+
+                        <div class="col p-3 text-center">
+                            <span class="d-block font-size-sm"><a class="btn btn-primary btn-sm text-light">Join
+                                    Group</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bg-main">
+    <h1 align="center">Powerful features made for...</h1>
+    <br>
+    <div class="container">
+        <div class="card-deck">
+            <div class="card" align="center">
+                <div class="card-body">
+                    <img src="{% static 'images/open-source.svg' %}">
+                    <h5 class="card-title">Open Source</h5>
+                    <p class="card-text">
+                        Retto Social is free and open-source software. We believe in your right to use, copy, study and change Mastodon as you see fit, and we benefit from contributions from the community.
+                    </p>
+                </div>
+            </div>
+            <div class="card" align="center">
+                <div class="card-body">
+                    <img src="{% static 'images/not-for-sale.svg' %}">
+                    <h5 class="card-title">Not for Sale</h5>
+                    <p class="card-text">
+                        We respect your agency. Your feed is curated and created by you. We will never serve ads or push profiles for you to see. That means your data and your time are yours and yours alone.
+                    </p>
+                </div>
+            </div>
+            <div class="card" align="center">
+                <div class="card-body">
+                    <img src="{% static 'images/freedom.svg' %}">
+                    <h5 class="card-title">Freedom</h5>
+                    <p class="card-text">
+                        Retto Social is a social platform focused on freedom and entertainment. Retto does not impose strict rules and censorship on you. Retto Social is a platform where you can unleash your creativity.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

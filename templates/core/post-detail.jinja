@@ -1,0 +1,66 @@
+{% extends 'layout.jinja' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{post.title}}{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'styles/detail.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="bg-main">
+    <div class="container w-75"><br>
+        <a href="/"><i class="bi bi-arrow-return-left"></i> Return to explore</a>
+        <h1>{{post.title}}</h1>
+        <hr class="w-50" align="left">
+        <span id="content">
+            {{post.media}}
+            {{post.content|safe}}
+        </span>
+    </div>
+    <br><br>
+    <div id="comments" class="container w-75"><br>
+        <h3>Comments</h3>
+        <section class="content-item">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h3 class="pull-left">New Comment</h3>
+                        <form enctype="multipart/form-data" method="POST">
+                            {% csrf_token %}
+                            {{form.media}}
+                            {{form|crispy}}
+                            <button type="submit" class="btn btn-primary btn-sm pull-right">Submit</button>
+                        </form>
+
+                        <h3>{{comments.count}} Comments</h3>
+                        {% if comments %}
+                        {% for comment in comments %}
+                        <div class="media">
+                            <a class="pull-left">
+                                {% if comment.author.avatar %}
+                                <img class="media-object" src="{{comment.author.avatar.url}}" alt=""></a>
+                            {% else %}
+                            <img class="media-object" src="{% static 'images/blank.avif' %}" alt=""></a>
+                            {% endif %}
+                            <div class="media-body">
+                                <h4 class="media-heading">{{comment.author.username}}</h4>
+                                <p>
+                                    {{comment.comment}}
+                                </p>
+                                <ul class="list-unstyled list-inline media-detail pull-left">
+                                    <li>{{comment.writed_at}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% else %}
+                        No comments found.<br><br>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock%}
