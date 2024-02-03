@@ -35,3 +35,7 @@
     display: inline-flex;
     align-items: stretch;
 }
+
+.card {
+    background-color: #000000 !important;
+}

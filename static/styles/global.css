@@ -1,19 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
 
 * {
-    font-family: Poppins !important;
+    font-family: Roboto !important;
+    text-decoration: none !important;
 }
 
-.navbar {
-    margin: 0px !important;
-    padding: 0px !important;
-    border-bottom: 1px solid rgb(184, 184, 184);
+body {
+    background-color: #080b0d !important;
+    color: #fafafa !important;
 }
 
-.bg-main {
-    background-color: rgb(245, 245, 245) !important;
-    padding-top: 50px;
-    padding-bottom: 50px;
+.main {
+    text-align: center;
+    padding-top: 10%;
 }
 
 .jumbotron {
@@ -21,43 +20,79 @@
 }
 
 .btn-primary {
-    background-color: rgb(69, 107, 165) !important;
-    border-color: rgb(69, 107, 165) !important;
+    background-color: rgb(112, 34, 34) !important;
+    border-color: rgb(112, 34, 34)!important;
     color: #fafafa;
     padding: 10px !important;
-    border-radius: 0px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    border-radius: 25px !important;
+    margin: 5px;
 }
 
-.bg-gray {
-    --bs-bg-opacity: 1;
-    background-color: #FF7F50 !important;
-}
-.card {
-    box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
-    border-radius: 0px !important;
-    border: none !important;
-}
-
-.main-search {
+.btn-secondary {
+    background-color: #0c1317b9 !important;
+    border-color: #0c1317b9 !important;
+    color: #fafafa;
     padding: 10px !important;
-    border-radius: 0px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    border-radius: 25px !important;
+    margin: 5px;
 }
 
-.btn-sm {
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.form-control {
+    background-color: #10161a !important;
+    border-color: #10161a !important;
     padding: 5px !important;
-}
-
-.badge {
-    padding: 7px !important;
-    border-radius: 0px !important;
-}
-
-.badge-admin {
-    background-color: #CB4335 !important;
     color: #fafafa !important;
 }
 
-.badge-user {
-    background-color: #5499C7 !important;
-    color: #fafafa !important;
+.form-control:focus {
+    box-shadow: none !important;
+    border-color: #10161a !important;
+}
+
+.signup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup .card {
+    background-color: #080b0d !important;
+    border: 3px solid white;
+    border-radius: 10px;
+    margin-top: 10%;
+    padding: 25px;
+}
+
+.network .card {
+    background-color: #0d1114 !important;
+}
+
+.network .list-group-item {
+    background-color: #0d1114;
+}
+
+.bg-dark2 {
+    background-color: #0d1114 !important;
+}
+
+.explore-header {
+    padding: 10px;
+    font-size: 20px;
+    background-color: #0b0e12;
+}
+
+@media only screen and (max-width:767px) {
+    .explore-header {
+        margin-top: 20px !important;
+    }
 }

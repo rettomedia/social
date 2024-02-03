@@ -4,20 +4,23 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-    {% if request.user.is_authenticated %}
-    <script>document.location.href = '/'</script>
-    {% else %}
-    <div class="bg-main">
-        <div class="container w-75"><br><br>
-            <h1>Login</h1>
-            <form enctype="multipart/form-data" method="post">
-                {% csrf_token %}
-                {{form.media}}
-                {{form|crispy}}
+{% if request.user.is_authenticated %}
+<script>document.location.href = '/'</script>
+{% else %}
+<div class="container col-9 signup">
+    <div class="card col-md-4">
+        <h3><strong>Sign In</strong></h3>
+        <span class="text-secondary">Continue from where you left off on the adventure.</span>
+        <br>
+        <form enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            {{form.media}}
+            {{form|crispy}}
 
-                <button type="submit" class="btn btn-primary">Login</button>
-            </form>
-        </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+            <a class="btn btn-secondary" href="/">Back</a>
+        </form>
     </div>
-    {% endif %}
+</div>
+{% endif %}
 {% endblock%}

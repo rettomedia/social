@@ -3,32 +3,44 @@
 {% block title %}Network{% endblock %}
 
 {% block content %}
-<div class="container-fluid gedf-wrapper"><br>
+<div class="container network w-full gedf-wrapper"><br>
     <div class="row">
         <div class="col-md-3">
             <div class="card">
-                <div class="card-body">
-                    <form action="{% url 'index' %}" class="d-flex">
-                        <input name="search" type="search" class="form-control main-search" placeholder="Search">
-                    </form>
-                </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                        <div class="h6 text-muted">Session</div>
-                        <div>{{request.user.username}}</div>
+                        {% if request.user.avatar %}
+                        <img src="{{request.user.avatar.url}}" class="w-25" style="border-radius: 100%;">
+                        {% else %}
+                        <img src="{% static 'images/blank.avif' %}" class="w-25" style="border-radius: 100%;">
+                        {% endif %}
                     </li>
                     <li class="list-group-item">
-                        <div class="h6 text-muted">Rank</div>
-                        {% if request.user.username == "ekin" %}
-                        <div><span class="badge badge-admin">Owner</span></div>
-                        {% else %}
-                        <div><span class="badge badge-user">User</span></div>
-                        {% endif %}
+                        <strong class="h6"><a href="/" class="text-light"><i class="bi bi-house"></i> Home</a></strong>
+                    </li>
+                    <li class="list-group-item">
+                        <strong class="h6"><a href="/explore/" class="text-light"><i class="bi bi-search"></i> Search</a></strong>
+                    </li>
+                    <li class="list-group-item">
+                        <strong class="h6"><a href="/profile/notifications/" class="text-light"><i class="bi bi-bell"></i> Notifications</a></strong>
+                    </li>
+                    <li class="list-group-item">
+                        <strong class="h6"><a href="/profile/" class="text-light"><i class="bi bi-person-circle"></i> Profile</a></strong>
+                    </li>
+                    <li class="list-group-item">
+                        <strong class="h6"><a href="/profile/settings/" class="text-light"><i class="bi bi-gear"></i> Settings</a></strong>
+                    </li>
+                    <li class="list-group-item">
+                        <strong class="h6"><a href="/logout/" class="text-light"><i class="bi bi-arrow-return-left"></i> Logout</a></strong>
+                    </li>
+                    <li class="list-group-item">
+                        <strong class="h6"><a href="/profile/write/" class="text-light btn btn-primary"><i class="bi bi-pencil-square"></i> New Post</a></strong>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="col-md-6 gedf-main">
+            <div class="explore-header"><strong># Explore</strong></div>
             {% for post in posts %}
             <div class="card gedf-card">
                 <div class="card-header">
@@ -42,7 +54,7 @@
                                 {% endif %}
                             </div>
                             <div class="ml-2">
-                                <div class="h5 m-0"><a href="/@{{post.author.username}}/" class="text-dark">{{post.author.username}}</a></div>
+                                <div class="h5 m-0"><a href="/@{{post.author.username}}/" class="text-light">{{post.author.username}}</a></div>
                                 <div class="h7 text-muted">{{post.edited_at}}</div>
                             </div>
                         </div>
@@ -50,7 +62,7 @@
                 </div>
                 <div class="card-body">
                     <a class="card-link" href="/@{{post.author.username}}/{{post.slug}}/">
-                        <h5 class="card-title">{{post.title}}</h5>
+                        <h5 class="card-title text-light">{{post.title}}</h5>
                     </a>
 
                     <p class="card-text">
@@ -59,32 +71,36 @@
                     </p>
                 </div>
                 <div class="card-footer">
-                    <a href="#" class="card-link"><i class="bi bi-chat-dots-fill"></i> Comment</a>
-                    <a href="#" class="card-link"><i class="bi bi-share-fill"></i> Share</a>
+                    <a href="/@{{post.author.username}}/{{post.slug}}/#comments" class="card-link text-secondary"><i class="bi bi-chat-dots-fill"></i></a>
+                    <a href="/@{{post.author.username}}/{{post.slug}}/#share" class="card-link text-secondary"><i class="bi bi-share-fill"></i></a>
                 </div>
             </div>
             {% endfor %}
         </div>
         <div class="col-md-3">
-            <div class="card gedf-card">
+            <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
+                    <form action="{% url 'index' %}" class="d-flex">
+                        <input name="search" type="search" class="form-control main-search" placeholder="Search">
+                    </form>
+                    <small class="text-secondary">Welcome to Retto Social. This is beta application that's still in development.</small>
                 </div>
-            </div>
-            <div class="card gedf-card">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
-                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div class="h6 text-muted">Session</div>
+                        <div>{{request.user.username}}</div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="h6 text-muted">Rank</div>
+                        <div>
+                            {% if request.user.username == "ekin" %}
+                            <span class="badge badge-danger">Owner</span>
+                            {% else %}
+                            <span class="badge badge-primary">User</span>
+                            {% endif %}
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

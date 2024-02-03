@@ -1,20 +1,30 @@
 {% extends 'layout.jinja' %}
+{% load static %}
 {% load crispy_forms_tags %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'styles/profile.css' %}">
+{% endblock %}
 
 {% block title %}Edit Post{% endblock %}
 
 {% block content %}
-    <div class="bg-main">
-        <div class="container w-75"><br><br>
-            <a href="/profile/"><i class="bi bi-arrow-return-left"></i> Return to profile</a>
-            <h1>Edit Post</h1>
-            <form enctype="multipart/form-data" method="post">
-                {% csrf_token %}
-                {{form.media}}
-                {{form|crispy}}
+<div class="bg-main">
+    <div class="container w-75"><br><br>
+        <div class="card">
+            <div class="card-header">
+                <a href="/profile/"><i class="bi bi-arrow-return-left"></i> Return to profile</a>
+            </div>
+            <div class="card-body">
+                <h1>Edit Post</h1>
+                <form enctype="multipart/form-data" method="post">
+                    {% csrf_token %}
+                    {{form.media}}
+                    {{form|crispy}}
 
-                <button type="submit" class="btn btn-primary">Save</button>
-            </form>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
         </div>
     </div>
+</div>
 {% endblock%}

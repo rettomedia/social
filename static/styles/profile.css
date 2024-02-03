@@ -5,8 +5,9 @@
 
 .card {
     margin-bottom: 20px;
-    -webkit-box-shadow: 0 2px 3px #eaedf2;
-    box-shadow: 0 2px 3px #eaedf2;
+    -webkit-box-shadow: 0 2px 3px #0d1114 !important;
+    box-shadow: 0 2px 3px #0d1114 !important;
+    background-color: #0d1114 !important;
 }
 
 .pb-0 {
@@ -60,7 +61,7 @@
 }
 
 .border-end {
-    border-right: 1px solid #eff0f2 !important;
+    border-right: 1px solid #0d1114 !important;
 }
 
 .d-inline-block {
@@ -145,7 +146,7 @@
 
 .work-activity .work-item {
     position: relative;
-    border-bottom: 2px dashed #eff0f2;
+    border-bottom: 2px dashed #0d1114;
     margin-bottom: 14px
 }
 
@@ -170,6 +171,11 @@
     font-size: 12px;
     min-width: 120px
 }
+
+.dropdown-item:hover {
+    background: none !important;
+}
+
 
 .work-activity .work-item::after {
     content: "";

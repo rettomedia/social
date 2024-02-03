@@ -1,10 +1,10 @@
 .content-item {
     padding:30px 0;
-	background-color:#FFFFFF;
+	background-color:#0d1114;
 }
 
 .content-item.grey {
-	background-color:#F0F0F0;
+	background-color:#0d1114;
 	padding:50px 0;
 	height:100%;
 }
@@ -15,6 +15,10 @@
 	line-height:45px;
 	text-transform:uppercase;
 	margin:20px 0;
+}
+
+.card {
+	background-color: #0d1114 !important;
 }
 
 .content-item h3 {
@@ -32,14 +36,14 @@
 }
 
 .content-headline h2 {
-	background-color:#FFFFFF;
+	background-color:#0d1114;
 	display:inline-block;
 	margin:-20px auto 0;
 	padding:0 20px;
 }
 
 .grey .content-headline h2 {
-	background-color:#F0F0F0;
+	background-color:#0d1114;
 }
 
 .content-headline h3 {
@@ -51,7 +55,7 @@
 
 #comments {
     box-shadow: 0 -1px 6px 1px rgba(0,0,0,0.1);
-	background-color:#FFFFFF;
+	background-color:#0d1114;
 }
 
 #comments form {
@@ -71,7 +75,7 @@
 }
 
 #comments .media {
-	border-top:1px dashed #DDDDDD;
+	border-top:1px solid #171d22;
 	padding:20px 0;
 	margin:0;
 }

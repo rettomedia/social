@@ -4,16 +4,23 @@
 {% block title %}Signup{% endblock %}
 
 {% block content %}
-    <div class="bg-main">
-        <div class="container w-75"><br><br>
-            <h1>Signup</h1>
-            <form enctype="multipart/form-data" method="post">
-                {% csrf_token %}
-                {{form.media}}
-                {{form|crispy}}
+{% if request.user.is_authenticated %}
+<script>document.location.href = '/'</script>
+{% else %}
+<div class="container col-9 signup">
+    <div class="card col-md-4">
+        <h3><strong>Create Account</strong></h3>
+        <span class="text-secondary">Fill in the data below.</span>
+        <br>
+        <form enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            {{form.media}}
+            {{form|crispy}}
 
-                <button type="submit" class="btn btn-primary">Signup</button>
-            </form>
-        </div>
+            <button type="submit" class="btn btn-primary">Signup</button>
+            <a class="btn btn-secondary" href="/">Back</a>
+        </form>
     </div>
+</div>
+{% endif %}
 {% endblock%}

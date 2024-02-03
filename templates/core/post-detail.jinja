@@ -8,18 +8,50 @@
 {% endblock %}
 
 {% block content %}
-<div class="bg-main">
-    <div class="container w-75"><br>
-        <a href="/"><i class="bi bi-arrow-return-left"></i> Return to explore</a>
-        <h1>{{post.title}}</h1>
-        <hr class="w-50" align="left">
-        <span id="content">
-            {{post.media}}
-            {{post.content|safe}}
-        </span>
+<div class="bg-main container">
+    <div class=""><br>
+        <div class="card gedf-card">
+            <div class="card-header">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="mr-2">
+                            {% if post.author.avatar %}
+                            <img class="rounded-circle" width="45" src="{{post.author.avatar.url}}" alt="">
+                            {% else %}
+                            <img class="rounded-circle" width="45" src="{% static 'images/blank.avif' %}" alt="">
+                            {% endif %}
+                        </div>
+                        <div class="ml-2">
+                            <div class="h5 m-0"><a href="/@{{post.author.username}}/"
+                                    class="text-light">{{post.author.username}}</a></div>
+                            <div class="h7 text-muted">{{post.edited_at}}</div>
+                            <a href="/">Return to explore &nbsp;<i class="bi bi-arrow-return-left"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <a class="card-link" href="/@{{post.author.username}}/{{post.slug}}/">
+                    <h5 class="card-title text-light">{{post.title}}</h5>
+                </a>
+
+                <p class="card-text">
+                    {{post.media}}
+                    {{post.content|safe}}
+                </p>
+            </div>
+            <div class="card-footer">
+                <div class="input-group mb-3 w-50" id="share">
+                    <input type="text" class="form-control" id="shareInput" readonly value="https://rettomedia.com/@{{post.author.username}}/{{post.slug}}/">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" id="shareButton" type="button"><i class="bi bi-share-fill"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <br><br>
-    <div id="comments" class="container w-75"><br>
+    <br>
+    <div id="comments" class="container"><br>
         <h3>Comments</h3>
         <section class="content-item">
             <div class="container">
