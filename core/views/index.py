@@ -2,12 +2,15 @@ from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from django.db.models import Q
 from account.models import Post
+from account.models import FriendRequest
+from django.db.models import Q
 
 def index(request):
     if request.user.is_authenticated:
         posts = Post.objects.all()
         search = request.GET.get('search')
         page = request.GET.get('posts')
+        friend_requests = FriendRequest.objects.filter(to_user=request.user, is_accepted=False)
         
         if search:
             posts = posts.filter(
@@ -18,7 +21,8 @@ def index(request):
         
         paginator = Paginator(posts, 10)
         return render(request, 'core/network.jinja', context={
-            'posts':paginator.get_page(page)
+            'posts':paginator.get_page(page),
+            'friend_requests':friend_requests,
         })
     else:
         return render(request, 'core/index.jinja')

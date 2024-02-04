@@ -19,10 +19,7 @@
                         <strong class="h6"><a href="/" class="text-light"><i class="bi bi-house"></i> Home</a></strong>
                     </li>
                     <li class="list-group-item">
-                        <strong class="h6"><a href="/explore/" class="text-light"><i class="bi bi-search"></i> Search</a></strong>
-                    </li>
-                    <li class="list-group-item">
-                        <strong class="h6"><a href="/profile/notifications/" class="text-light"><i class="bi bi-bell"></i> Notifications</a></strong>
+                        <strong class="h6"><a href="/profile/notifications/" class="text-light"><i class="bi bi-bell"></i> Notifications {% if friend_requests %}<span class="badge badge-warning">{{friend_requests|length}}</span>{% endif %}</a></strong>
                     </li>
                     <li class="list-group-item">
                         <strong class="h6"><a href="/profile/" class="text-light"><i class="bi bi-person-circle"></i> Profile</a></strong>

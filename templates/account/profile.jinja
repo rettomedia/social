@@ -8,151 +8,202 @@
 {% block content %}
 <div class="container"><br>
     <div class="row">
-    <div class="col-xl-8">
-        <div class="card">
-            <div class="card-header">
-                <a href="/" class="text-secondary"><i class="bi bi-arrow-return-left"></i> Back to explore</a>
-            </div>
-            <div class="card-body pb-0">
-                <div class="row align-items-center">
-                    <div class="col-md-3">
-                        <div class="text-center border-end">
-                            {% if user.avatar %}
-                            <img src="{{user.avatar.url}}" class="img-fluid avatar-xxl rounded-circle" alt="">
-                            {% else %}
-                            <img src="{% static 'images/blank.avif' %}" class="img-fluid avatar-xxl rounded-circle"
-                                alt="">
-                            {% endif %}
-                            <h4 class="text-primary font-size-20 mt-3 mb-2 text-light">{{user.username}}</h4>
-                            <span class="text-muted font-size-13 mb-0">Last seen: {{user.last_login}}</span>
-                        </div>
-                    </div><!-- end col -->
-                    <div class="col-md-9">
-                        <div class="ms-3">
-                            <div align="center">
-                                <h4 class="card-title mb-2">Biography</h4>
-                                <p class="mb-0 text-muted">
-                                    {% if user.bio %}
-                                    {{user.bio}}
-                                    {% else %}
-                                    No bio found
-                                    {% endif %}
-                                </p><br>
-                                <p>
-                                    <a href="settings/" class="btn btn-primary btn-sm">Edit Profile</a>
-                                    <a href="write/" class="btn btn-secondary text-light btn-sm">Write Post</a>
+        <div class="col-xl-8">
+            <div class="card">
+                <div class="card-header">
+                    <a href="/" class="text-secondary"><i class="bi bi-arrow-return-left"></i> Back to explore</a>
+                </div>
+                <div class="card-body pb-0">
+                    <div class="row align-items-center">
+                        <div class="col-md-3">
+                            <div class="text-center border-end">
+                                {% if user.avatar %}
+                                <img src="{{user.avatar.url}}" class="img-fluid avatar-xxl rounded-circle" alt="">
+                                {% else %}
+                                <img src="{% static 'images/blank.avif' %}" class="img-fluid avatar-xxl rounded-circle"
+                                    alt="">
+                                {% endif %}
+                                <h4 class="text-primary font-size-20 mt-3 mb-2 text-light">{{user.username}}</h4>
+                                <span class="text-muted font-size-13 mb-0">Last seen: {{user.last_login}}</span>
+                            </div>
+                        </div><!-- end col -->
+                        <div class="col-md-9">
+                            <div class="ms-3">
+                                <div align="center">
+                                    <h4 class="card-title mb-2">Biography</h4>
+                                    <p class="mb-0 text-muted">
+                                        {% if user.bio %}
+                                        {{user.bio}}
+                                        {% else %}
+                                        No bio found
+                                        {% endif %}
+                                    </p><br>
+                                    <p>
+                                        <a href="settings/" class="btn btn-primary btn-sm">Edit Profile</a>
+                                        <a href="write/" class="btn btn-secondary text-light btn-sm">Write Post</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div><!-- end col -->
+                    </div><!-- end row -->
+                </div><!-- end card body -->
+            </div><!-- end card -->
+
+            <div class="card">
+                <div class="tab-content p-4">
+
+
+                    <div class="tab-pane active show" id="tasks-tab" role="tabpanel">
+                        <h4 class="card-title mb-4">Posts</h4>
+
+                        {% for post in posts %}
+                        <div class="card gedf-card">
+                            <div class="card-header">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="mr-2">
+                                            {% if user.avatar %}
+                                            <img class="rounded-circle" width="45" src="{{user.avatar.url}}" alt="">
+                                            {% else %}
+                                            <img class="rounded-circle" width="45"
+                                                src="{% static 'images/blank.avif' %}" alt="">
+                                            {% endif %}
+                                        </div>
+                                        <div class="ml-2">
+                                            <div class="h5 m-0">{{user.username}}</div>
+                                            <div class="h7 text-muted">{{post.writed_at}}</div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="dropdown">
+                                            <button class="btn btn-link dropdown-toggle text-light" type="button"
+                                                id="gedf-drop1" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
+                                                <i class="fa fa-ellipsis-h"></i>
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-right bg-dark2"
+                                                aria-labelledby="gedf-drop1">
+                                                <div class="h6 dropdown-header text-light">Configuration</div>
+                                                <a class="dropdown-item text-light" href="edit/{{post.slug}}/">Edit</a>
+                                                <a class="dropdown-item text-light"
+                                                    href="delete/{{post.slug}}/">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="card-body">
+                                <a class="card-link" href="/@{{post.author.username}}/{{post.slug}}/">
+                                    <h5 class="card-title text-light">{{post.title}}</h5>
+                                </a>
+
+                                <p class="card-text">
+                                    {{post.content|safe}}
                                 </p>
                             </div>
                         </div>
-                    </div><!-- end col -->
-                </div><!-- end row -->
-            </div><!-- end card body -->
-        </div><!-- end card -->
-
-        <div class="card">
-            <div class="tab-content p-4">
+                        {% endfor %}
+                    </div>
 
 
-                <div class="tab-pane active show" id="tasks-tab" role="tabpanel">
-                    <h4 class="card-title mb-4">Posts</h4>
-                    
-                    {% for post in posts %}
-                    <div class="card gedf-card">
-                        <div class="card-header">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="mr-2">
-                                        {% if user.avatar %}
-                                        <img class="rounded-circle" width="45" src="{{user.avatar.url}}" alt="">
-                                        {% else %}
-                                        <img class="rounded-circle" width="45" src="{% static 'images/blank.avif' %}"
-                                            alt="">
-                                        {% endif %}
-                                    </div>
-                                    <div class="ml-2">
-                                        <div class="h5 m-0">{{user.username}}</div>
-                                        <div class="h7 text-muted">{{post.writed_at}}</div>
-                                    </div>
-                                </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="pb-2">
+                        <h4 class="card-title mb-3">Scenerios</h4>
+                        <p>
+                            Coming soon...
+                        </p>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="pb-2">
+                        <h4 class="card-title mb-3">Friends</h4>
+                        {% if friends %}
+                        {% for friend in friends %}
+                        {% if friend.from_user == request.user %}
+                        <div class="list-group-item text-left" style="background:none !important;">
+                            {% if friend.to_user.avatar %}
+                            <img class="w-25 h-25" src="{{friend.to_user.avatar.url}}" style="border-radius: 10px;">
+                            {% else %}
+                            <img class="w-25 h-25" src="{% static 'images/blank.avif' %}"
+                                style="border-radius: 10px;">
+                            {% endif %}
+                            <label class="name">&nbsp;
+                                <a class="text-light" href="/@{{friend.to_user.username}}/">{{friend.to_user.username}}</a> <a href="/profile/delete-friend/{{friend.to_user.username}}/"><small>Delete Friend</small></a>
+                                &nbsp;<br>
+                                &nbsp;&nbsp;<small class="text-secondary">{{friend.to_user.last_login}}</sma>
+
+                            </label>
+                            <br>
+                        </div>
+                        {% elif friend.to_user == request.user %}
+                        <div class="list-group-item text-left" style="background:none !important;">
+                            {% if friend.from_user.avatar %}
+                            <img class="w-25 h-25" src="{{friend.from_user.avatar.url}}" style="border-radius: 10px;">
+                            {% else %}
+                            <img class="w-25 h-25" src="{% static 'images/blank.avif' %}"
+                                style="border-radius: 10px;">
+                            {% endif %}
+                            <label class="name">&nbsp;
+                                <a class="text-light" href="/@{{friend.from_user.username}}/">{{friend.from_user.username}}</a> <a href="/profile/delete-friend/{{friend.from_user.username}}/"><small>Delete Friend</small></a>
+                                &nbsp;<br>
+                                &nbsp;&nbsp;<small class="text-secondary">{{friend.from_user.last_login}}</small><br>
+                            </label>
+                            <br>
+                        </div>
+                        {% endif %}<br>
+                        {% endfor %}
+                        {% else %}
+                        No friends found.
+                        {% endif %}
+                    </div>
+                    <hr>
+                </div>
+            </div>
+            <div class="card drop-card">
+                <div class="card-body">
+                    <div>
+                        <h4 class="card-title mb-4">Comments</h4>
+                        <p>
+                            {% if comments %}
+                            {% for comment in comments %}
+                        <div class="media">
+                            <div class="media-body">
+                                <div class="text-secondary">{{comment.comment}}</div>
                                 <div>
                                     <div class="dropdown">
-                                        <button class="btn btn-link dropdown-toggle text-light" type="button" id="gedf-drop1"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <button class="btn btn-link dropdown-toggle text-secondary" type="button"
+                                            id="gedf-drop1" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
                                             <i class="fa fa-ellipsis-h"></i>
                                         </button>
-                                        <div class="dropdown-menu dropdown-menu-right bg-dark2" aria-labelledby="gedf-drop1">
+                                        <div class="dropdown-menu dropdown-menu-right bg-dark2"
+                                            aria-labelledby="gedf-drop1">
                                             <div class="h6 dropdown-header text-light">Configuration</div>
-                                            <a class="dropdown-item text-light" href="edit/{{post.slug}}/">Edit</a>
-                                            <a class="dropdown-item text-light" href="delete/{{post.slug}}/">Delete</a>
+                                            <a class="dropdown-item text-light"
+                                                href="delete-comment/{{comment.id}}/">Delete</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-                        <div class="card-body">
-                            <a class="card-link" href="/@{{post.author.username}}/{{post.slug}}/">
-                                <h5 class="card-title text-light">{{post.title}}</h5>
-                            </a>
-
-                            <p class="card-text">
-                                {{post.content|safe}}
-                            </p>
-                        </div>
+                        {% endfor %}
+                        {% else %}
+                        No comments found.
+                        {% endif %}
+                        </p>
                     </div>
-                    {% endfor %}
-                </div>
-
-
-            </div>
-        </div>
-    </div>
-    <div class="col-xl-4">
-        <div class="card">
-            <div class="card-body">
-                <div class="pb-2">
-                    <h4 class="card-title mb-3">Scenerios</h4>
-                    <p>
-                        Coming soon...
-                    </p>
-                </div>
-                <hr>
-            </div>
-        </div>
-
-        <div class="card drop-card">
-            <div class="card-body">
-                <div>
-                    <h4 class="card-title mb-4">Comments</h4>
-                    <p>
-                        {% if comments %}
-                        {% for comment in comments %}
-                    <div class="media">
-                        <div class="media-body">
-                        <div class="text-secondary">{{comment.comment}}</div>
-                            <div>
-                                <div class="dropdown">
-                                    <button class="btn btn-link dropdown-toggle text-secondary" type="button" id="gedf-drop1"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fa fa-ellipsis-h"></i>
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-right bg-dark2" aria-labelledby="gedf-drop1">
-                                        <div class="h6 dropdown-header text-light">Configuration</div>
-                                        <a class="dropdown-item text-light" href="delete-comment/{{comment.id}}/">Delete</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                    {% else %}
-                    No comments found.
-                    {% endif %}
-                    </p>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 {% endblock %}
