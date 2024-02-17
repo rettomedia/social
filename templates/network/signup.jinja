@@ -1,0 +1,97 @@
+{% extends 'base.jinja' %}
+{% load static %}
+{% block title %}Signup{% endblock %}
+
+{% block content %}
+<div class="preloader"></div>
+
+<div class="main-wrap">
+
+    <div class="nav-header bg-transparent shadow-none border-0">
+        <div class="nav-top w-100">
+            <a href="/">
+                <img width="50" height="50" src="{% static 'images/main-logo.png' %}">
+                <span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xxl logo-text mb-0">Retto
+                </span> </a>
+            <a href="#" class="mob-menu ms-auto me-2 chat-active-btn"><i
+                    class="feather-message-circle text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
+            <a href="default-video.html" class="mob-menu me-2"><i
+                    class="feather-video text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
+            <a href="#" class="me-2 menu-search-icon mob-menu"><i
+                    class="feather-search text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
+            <button class="nav-menu me-0 ms-2"></button>
+
+            <a class="d-none d-lg-block fw-500 text-white font-xsss p-3 ms-auto w100 text-center lh-20 rounded-xl"></a>
+            <a class="d-none d-lg-block fw-500 text-white font-xsss p-3 ms-2 w100 text-center lh-20 rounded-xl"></a>
+
+        </div>
+
+
+    </div>
+
+    <div class="row">
+        <div class="col-xl-5 d-none d-xl-block p-0 vh-100 bg-image-cover bg-no-repeat"
+            style="background-image: url({% static 'images/login-bg-2.jpg' %});"></div>
+        <div class="col-xl-7 vh-100 align-items-center d-flex bg-white rounded-3 overflow-hidden">
+            <div class="card shadow-none border-0 ms-auto me-auto login-card">
+                <div class="card-body rounded-0 text-left">
+                    <h2 class="fw-700 display1-size display2-md-size mb-4">Create <br>your account</h2>
+                    <form method="post" url="{% url 'signup' %}">
+                        {% csrf_token %}
+                        <div class="form-group icon-input mb-3">
+                            <i class="font-sm ti-user text-grey-500 pe-0"></i>
+                            <input type="text" name="username"
+                                class="style2-input ps-5 form-control text-grey-900 font-xsss fw-600"
+                                placeholder="Your Username">
+                        </div>
+                        <div class="form-group icon-input mb-3">
+                            <i class="font-sm ti-email text-grey-500 pe-0"></i>
+                            <input type="email" name="email"
+                                class="style2-input ps-5 form-control text-grey-900 font-xsss fw-600"
+                                placeholder="Your Email Address">
+                        </div>
+                        <div class="form-group icon-input mb-3">
+                            <input type="Password" name="password1"
+                                class="style2-input ps-5 form-control text-grey-900 font-xss ls-3"
+                                placeholder="Password">
+                            <i class="font-sm ti-lock text-grey-500 pe-0"></i>
+                        </div>
+                        <div class="form-group icon-input mb-1">
+                            <input type="Password" name="password2"
+                                class="style2-input ps-5 form-control text-grey-900 font-xss ls-3"
+                                placeholder="Confirm Password">
+                            <i class="font-sm ti-lock text-grey-500 pe-0"></i>
+                        </div>
+                        <div class="form-check text-left mb-3">
+                            <input type="checkbox" name="agree" class="form-check-input mt-2" id="agree">
+                            <label class="form-check-label font-xsss text-grey-500" for="agree">Accept Term and
+                                Conditions</label>
+                            <!-- <a href="#" class="fw-600 font-xsss text-grey-700 mt-1 float-right">Forgot your Password?</a> -->
+                        </div>
+
+                        {% if form.errors %}
+                        {% for field, error_list in form.errors.items %}
+                        {% for error in error_list %}
+                        <div class="alert alert-danger">
+                            {{ error }}
+                        </div>
+                        {% endfor %}
+                        {% endfor %}
+                        {% endif %}
+
+                        <div class="form-group mb-1"><button type="submit"
+                                class="form-control text-center style2-input text-white fw-600 bg-dark border-0 p-0 ">Register</button>
+                        </div>
+                    </form>
+
+                    <div class="col-sm-12 p-0 text-left">
+                        <h6 class="text-grey-500 font-xsss fw-500 mt-0 mb-0 lh-32">Already have account <a
+                                href="/login/" class="fw-700 ms-1">Login</a></h6>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock%}
