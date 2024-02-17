@@ -8,6 +8,8 @@ django = "*"
 pillow = "*"
 django-environ = "*"
 django-autoslug = "*"
+django-compressor = "*"
+django-libsass = "*"
 
 [dev-packages]
 
