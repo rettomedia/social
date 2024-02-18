@@ -109,21 +109,3 @@
 
     </div>
 </div>
-
-
-<!-- right chat -->
-
-<div class="app-footer border-0 shadow-lg bg-primary-gradiant">
-    <a href="default.html" class="nav-content-bttn nav-center"><i class="feather-home"></i></a>
-    <a href="default-video.html" class="nav-content-bttn"><i class="feather-package"></i></a>
-    <a href="default-live-stream.html" class="nav-content-bttn" data-tab="chats"><i class="feather-layout"></i></a>
-    <a href="shop-2.html" class="nav-content-bttn"><i class="feather-layers"></i></a>
-    <a href="default-settings.html" class="nav-content-bttn">
-        {% if request.user.avatar %}
-        <img src="{{request.user.avatar.url}}" style="border-radius: 100%;" alt="user" class="w30 shadow-xss">
-        {% else %}
-        <img src="{% static 'images/blank-profile.jpg' %}" style="border-radius: 100%;" alt="user"
-            class="w30 shadow-xss">
-        {% endif %}
-    </a>
-</div>
