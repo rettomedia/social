@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'network',
     'posts',
     'account',
+    'groups',
 ]
 
 MIDDLEWARE = [
