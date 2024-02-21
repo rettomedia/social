@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "b69f01910da7ee396cfe06cadef1230741302d8029b420486d236d00a843472c"
+            "sha256": "ad9e50709c1e0f34e05ed01413333a835b57acd2711809b2ccfdfce27f3dc357"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -23,6 +23,15 @@
             ],
             "markers": "python_version >= '3.7'",
             "version": "==3.7.2"
+        },
+        "crispy-bootstrap4": {
+            "hashes": [
+                "sha256:1a88e74f8d36d2dedeb40a66f246994f3ce5cd855017785d0291e741d3e7d7c2",
+                "sha256:d60e93eb6d82886c009eb174f2a4c78fdac602a1efadf0305471c84815bd973a"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.8'",
+            "version": "==2023.1"
         },
         "django": {
             "hashes": [
@@ -56,6 +65,15 @@
             ],
             "index": "pypi",
             "version": "==4.4"
+        },
+        "django-crispy-forms": {
+            "hashes": [
+                "sha256:4d7ec431933ad4d4b5c5a6de4a584d24613c347db9ac168723c9aaf63af4bb96",
+                "sha256:d592044771412ae1bd539cc377203aa61d4eebe77fcbc07fbc8f12d3746d4f6b"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.8'",
+            "version": "==2.1"
         },
         "django-environ": {
             "hashes": [
@@ -225,13 +243,13 @@
             "markers": "python_version >= '3.5'",
             "version": "==0.4.4"
         },
-        "typing-extensions": {
+        "tzdata": {
             "hashes": [
-                "sha256:23478f88c37f27d76ac8aee6c905017a143b0b1b886c3c9f66bc2fd94f9f5783",
-                "sha256:af72aea155e91adfc61c3ae9e0e342dbc0cba726d6cba4b6c72c1f34e47291cd"
+                "sha256:2674120f8d891909751c38abcdfd386ac0a5a1127954fbc332af6b5ceae07efd",
+                "sha256:9068bc196136463f5245e51efda838afa15aaeca9903f49050dfa2679db4d252"
             ],
-            "markers": "python_version < '3.11'",
-            "version": "==4.9.0"
+            "markers": "sys_platform == 'win32'",
+            "version": "==2024.1"
         }
     },
     "develop": {}

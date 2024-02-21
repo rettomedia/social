@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'posts',
     'account',
     'groups',
+    'crispy_forms',
+    'crispy_bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -149,3 +151,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login/'
 AUTH_USER_MODEL = 'network.CustomUser'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

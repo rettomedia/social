@@ -114,8 +114,8 @@
                                 </div>
                             </div>
                             <div class="card-body d-flex p-0 mt-3">
-                                <a class="btn btn-primary btn-sm text-light">Edit Post</a>
-                                <a class="btn btn-link btn-sm text-dark" style="text-decoration: none !important;">Delete Post</a>
+                                <a href="/account/edit-post/{{post.slug}}/" class="btn btn-primary btn-sm text-light">Edit Post</a>
+                                <a href="/account/delete-post/{{post.slug}}/" class="btn btn-link btn-sm text-dark" style="text-decoration: none !important;">Delete Post</a>
                             </div>
                         </div>
                         {% endfor %}
