@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from network.models import CustomUser
 from posts.models import Post
 
@@ -13,4 +13,4 @@ def view_profile(request, username):
             'posts':posts,
         })
     else:
-        pass
+        return redirect('profile')
