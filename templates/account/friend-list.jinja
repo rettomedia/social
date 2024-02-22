@@ -1,0 +1,157 @@
+{% extends 'base.jinja' %}
+{% load static %}
+{% block title %}Friend List{% endblock %}
+
+{% block content %}
+<div class="preloader"></div>
+
+<div class="main-wrapper">
+    {% include '../components/_nav.jinja' %}
+    {% include '../components/_left.jinja' %}
+
+    <div class="main-content right-chat-active">
+
+        <div class="middle-sidebar-bottom">
+            <div class="middle-sidebar-left pe-0">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card shadow-xss w-100 d-block d-flex border-0 p-4 mb-3">
+                            <div class="card-body d-flex align-items-center p-0">
+                                <h2 class="fw-700 mb-0 mt-0 font-md text-grey-900">Friends</h2>
+                                <div class="search-form-2 ms-auto">
+                                    <i class="ti-search font-xss"></i>
+                                    <input type="text"
+                                        class="form-control text-grey-500 mb-0 bg-greylight theme-dark-bg border-0"
+                                        placeholder="Search here.">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row ps-2 pe-2">
+                            {% for friend in friend_list %}
+                            <div class="col-md-3 col-sm-4 pe-2 ps-2">
+                                <div class="card d-block border-0 shadow-xss rounded-3 overflow-hidden mb-3">
+                                    <div class="card-body d-block w-100 ps-3 pe-3 pb-4 text-center">
+                                        <figure class="avatar ms-auto me-auto mb-0 position-relative w65 z-index-1">
+                                            {% if friend.to_user == request.user %}
+                                                {% if friend.from_user.avatar %}
+                                                    <img
+                                                src="{{friend.from_user.avatar}}" alt="image"
+                                                class="float-right p-0 bg-white rounded-circle w-100 shadow-xss">
+                                                {% else %}
+                                                <img
+                                                src="{% static 'images/blank-profile.jpg' %}" alt="image"
+                                                class="float-right p-0 bg-white rounded-circle w-100 shadow-xss">
+                                                {% endif %}
+                                            {% elif friend.from_user == request.user %}
+                                                {% if friend.to_user.avatar  %}
+                                                <img
+                                                src="{{friend.to_user.avatar}}" alt="image"
+                                                class="float-right p-0 bg-white rounded-circle w-100 shadow-xss">
+                                                {% else %}
+                                                <img
+                                                src="{% static 'images/blank-profile.jpg' %}" alt="image"
+                                                class="float-right p-0 bg-white rounded-circle w-100 shadow-xss">
+                                                {% endif %}
+                                            {% endif %}
+                                        </figure>
+                                        <div class="clearfix"></div>
+                                        <h4 class="fw-700 font-xsss mt-3 mb-1">
+                                            {% if friend.to_user == request.user %}
+                                                {{friend.from_user.username}}
+                                            {% elif friend.from_user == request.user %}
+                                                {{friend.to_user.username}}
+                                            {% endif %}
+                                        </h4>
+                                        <p class="fw-500 font-xsssss text-grey-500 mt-0 mb-3">
+                                            Last seen
+                                            {% if friend.to_user == request.user %}
+                                                {{friend.from_user.last_login}}
+                                            {% elif friend.from_user == request.user %}
+                                                {{friend.to_user.last_login}}
+                                            {% endif %}
+                                        </p>
+                                        {% if friend.from_user == request.user %}
+                                        <a href="/account/delete-friend/{{friend.to_user.username}}/"
+                                            class="mt-0 btn pt-2 pb-2 ps-3 pe-3 lh-24 ms-1 ls-3 d-inline-block rounded-xl bg-danger font-xsssss fw-700 ls-lg text-white">DELETE
+                                            FRIEND</a>
+                                        {% elif friend.to_user == request.user %}
+                                        <a href="/account/delete-friend/{{friend.from_user.username}}/"
+                                            class="mt-0 btn pt-2 pb-2 ps-3 pe-3 lh-24 ms-1 ls-3 d-inline-block rounded-xl bg-danger font-xsssss fw-700 ls-lg text-white">DELETE
+                                            FRIEND</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="row ps-2 pe-2">
+                            {% for friend in friend_requests %}
+                            <div class="col-md-3 col-sm-4 pe-2 ps-2">
+                                <div class="card d-block border-0 shadow-xss rounded-3 overflow-hidden mb-3">
+                                    <div class="card-body d-block w-100 ps-3 pe-3 pb-4 text-center">
+                                        <figure class="avatar ms-auto me-auto mb-0 position-relative w65 z-index-1">
+                                            {% if friend.to_user == request.user %}
+                                                {% if friend.from_user.avatar %}
+                                                    <img
+                                                src="{{friend.from_user.avatar}}" alt="image"
+                                                class="float-right p-0 bg-white rounded-circle w-100 shadow-xss">
+                                                {% else %}
+                                                <img
+                                                src="{% static 'images/blank-profile.jpg' %}" alt="image"
+                                                class="float-right p-0 bg-white rounded-circle w-100 shadow-xss">
+                                                {% endif %}
+                                            {% elif friend.from_user == request.user %}
+                                                {% if friend.to_user.avatar  %}
+                                                <img
+                                                src="{{friend.to_user.avatar}}" alt="image"
+                                                class="float-right p-0 bg-white rounded-circle w-100 shadow-xss">
+                                                {% else %}
+                                                <img
+                                                src="{% static 'images/blank-profile.jpg' %}" alt="image"
+                                                class="float-right p-0 bg-white rounded-circle w-100 shadow-xss">
+                                                {% endif %}
+                                            {% endif %}
+                                        </figure>
+                                        <div class="clearfix"></div>
+                                        <h4 class="fw-700 font-xsss mt-3 mb-1">
+                                            {% if friend.to_user == request.user %}
+                                                {{friend.from_user.username}}
+                                            {% elif friend.from_user == request.user %}
+                                                {{friend.to_user.username}}
+                                            {% endif %}
+                                        </h4>
+                                        <p class="fw-500 font-xsssss text-grey-500 mt-0 mb-3">
+                                            Last seen
+                                            {% if friend.to_user == request.user %}
+                                                {{friend.from_user.last_login}}
+                                            {% elif friend.from_user == request.user %}
+                                                {{friend.to_user.last_login}}
+                                            {% endif %}
+                                        </p>
+                                        {% if friend.from_user == request.user %}
+                                        <a href="/account/accept-friend/{{friend.to_user.username}}/"
+                                            class="mt-0 btn pt-2 pb-2 ps-3 pe-3 lh-24 ms-1 ls-3 d-inline-block rounded-xl bg-success font-xsssss fw-700 ls-lg text-white">ACCEPT</a>
+                                        <a href="/account/reject-friend/{{friend.to_user.username}}/"
+                                            class="mt-0 btn pt-2 pb-2 ps-3 pe-3 lh-24 ms-1 ls-3 d-inline-block rounded-xl bg-danger font-xsssss fw-700 ls-lg text-white">REJECT</a>
+                                        {% elif friend.to_user == request.user %}
+                                        <a href="/account/accept-friend/{{friend.from_user.username}}/"
+                                            class="mt-0 btn pt-2 pb-2 ps-3 pe-3 lh-24 ms-1 ls-3 d-inline-block rounded-xl bg-success font-xsssss fw-700 ls-lg text-white">ACCEPT</a>
+                                        <a href="/account/reject-friend/{{friend.from_user.username}}/"
+                                            class="mt-0 btn pt-2 pb-2 ps-3 pe-3 lh-24 ms-1 ls-3 d-inline-block rounded-xl bg-danger font-xsssss fw-700 ls-lg text-white">REJECT</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include '../components/_right-chat.jinja' %}
+    {% include '../components/_footer.jinja' %}
+</div>
+{% endblock %}

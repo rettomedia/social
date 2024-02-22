@@ -12,6 +12,3 @@ class Friend(models.Model):
         db_table = 'friend'
         verbose_name = 'Friend'
         verbose_name_plural = 'Friends'
-
-    def __str__(self):
-        return self.requested_at
