@@ -12,4 +12,5 @@ urlpatterns = [
     path('delete-friend/<str:username>/', delete_friend, name='delete_friend'),
     path('accept-friend/<str:username>/', accept_friend, name='accept_friend'),
     path('reject-friend/<str:username>/', reject_friend, name='reject_name'),
+    path('edit-profile/', edit_profile, name='edit_profile'),
 ]
