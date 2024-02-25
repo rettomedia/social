@@ -8,8 +8,6 @@ django = "*"
 pillow = "*"
 django-environ = "*"
 django-autoslug = "*"
-django-compressor = "*"
-django-libsass = "*"
 django-crispy-forms = "*"
 crispy-bootstrap4 = "*"
 
