@@ -12,6 +12,9 @@ class CustomAdmin(UserAdmin):
         }),
         ('Bio Area', {
             'fields':['bio']
+        }),
+        ('Background Image', {
+            'fields':['background_image']
         })
     )
 

@@ -27,10 +27,10 @@
                         <div class="card-body p-4 w-100 bg-current border-0 d-flex rounded-3">
                             <a href="/account/profile/" class="d-inline-block mt-2"><i
                                     class="ti-arrow-left font-sm text-white"></i></a>
-                            <h4 class="font-xs text-white fw-600 ms-4 mb-0 mt-2">Edit Post</h4>
+                            <h4 class="font-xs text-white fw-600 ms-4 mb-0 mt-2">Edit Profile</h4>
                         </div>
                         <div class="card-body edit-profile-area font-xsss p-lg-5 p-4 w-100 border-0">
-                            <form method="post">
+                            <form method="post" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 <div class="row">
                                     {{form.media}}

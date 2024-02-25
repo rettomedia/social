@@ -1,0 +1,42 @@
+{% extends 'base.jinja' %}
+{% load static %}
+{% block title %}Help Center{% endblock %}
+
+{% block content %}
+<div class="preloader"></div>
+
+<div class="main-wrapper">
+    {% include '../components/_nav.jinja' %}
+
+    <div class="main-content pt-0 bg-white ps-0 pe-0">
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 d-none d-xl-block p-0 vh-100 bg-image-contain bg-image-center bg-no-repeat"
+                    style="background-image: url({% static 'images/coming-soon.png' %});"></div>
+                <div class="col-xl-6 vh-100 align-items-center d-flex bg-white rounded-3 overflow-hidden">
+                    <div class="card shadow-none border-0 ps-lg--5 me-auto coming-soon-card">
+                        <div class="card-body rounded-0 text-left pt-md-5 mt-md-5 ps-0 pe-0">
+                            <div class="timer w-100 mb-3 bg-grey-time">
+                                <div class="time-count"><span class="text-time">00</span> <span
+                                        class="text-day">Day</span></div>
+                                <div class="time-count"><span class="text-time">00</span> <span
+                                        class="text-day">Hours</span> </div>
+                                <div class="time-count"><span class="text-time">00</span> <span
+                                        class="text-day">Min</span> </div>
+                                <div class="time-count"><span class="text-time">00</span> <span
+                                        class="text-day">Sec</span> </div>
+                            </div>
+                            <h2 class="fw-700 text-grey-900 display3-size display4-md-size lh-2">We're under <span
+                                    class="text-primary">construction.</span> Check back for an update soon.</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include '../components/_footer.jinja' %}
+</div>
+{% endblock %}

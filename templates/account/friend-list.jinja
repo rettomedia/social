@@ -30,11 +30,11 @@
                                                 {% if friend.from_user.avatar %}
                                                     <img
                                                 src="{{friend.from_user.avatar}}" alt="image"
-                                                class="float-right p-0 bg-white rounded-circle w-100 shadow-xss">
+                                                class="float-right p-0 bg-white avatar rounded-circle w-100 shadow-xss">
                                                 {% else %}
                                                 <img
                                                 src="{% static 'images/blank-profile.jpg' %}" alt="image"
-                                                class="float-right p-0 bg-white rounded-circle w-100 shadow-xss">
+                                                class="float-right p-0 bg-white avatar rounded-circle w-100 shadow-xss">
                                                 {% endif %}
                                             {% elif friend.from_user == request.user %}
                                                 {% if friend.to_user.avatar  %}

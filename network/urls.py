@@ -9,5 +9,6 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(
         template_name='network/login.jinja'
     ), name='login'),
+    path('help-center/', help_center, name='help_center'),
     path('@<str:username>/', view_profile, name='view_profile'),
 ]

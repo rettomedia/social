@@ -2,6 +2,17 @@
 {% load static %}
 {% block title %}Profile{% endblock %}
 
+{% block styles %}
+<style>
+.avatar {
+    border-radius: 50%; /* Dikdörtgeni daireye dönüştürmek için */
+    object-fit: cover; /* İçeriği kırpılmadan doldurmak için */
+    object-position: center; /* İçeriği ortalamak için */
+}
+
+</style>
+{% endblock %}
+
 {% block content %}
 <div class="preloader"></div>
 
@@ -21,17 +32,17 @@
                             style="height: 450px !important;">
                             <div class="card-body h250 p-0 rounded-xxl overflow-hidden m-3">
                                 {% if user.background_image %}
-
+                                <img src="{{user.background_image.url}}" class="w-100" alt="image">
                                 {% else %}
                                 <img src="{% static 'images/example-bg.jpg' %}" class="w-100" alt="image">
                                 {% endif %}
                             </div>
                             <div class="card-body p-0 position-relative">
-                                    <figure class="avatar position-absolute w100 z-index-1" style="top:-40px; left: 30px;">
+                                    <figure class="avatar position-absolute w100 z-index-1" style="top:-40px; left: 30px">
                                         {% if request.user.avatar %}
-                                        <img src="{{request.user.avatar.url}}" alt="image" class="float-right p-1 bg-white rounded-circle w-100">
+                                        <img src="{{request.user.avatar.url}}" alt="image" class="float-right w-100 p-1 bg-white rounded-circle avatar">
                                         {% else %}
-                                        <img src="{% static 'images/blank-profile.jpg' %}" alt="image" class="float-right p-1 bg-white rounded-circle w-100">
+                                        <img src="{% static 'images/blank-profile.jpg' %}" alt="image" class="float-right w-100 p-1 bg-white avatar rounded-circle">
                                         {% endif %}
                                     </figure>
                                     <h4 class="fw-700 font-sm mt-2 mb-lg-5 mb-4 pl-15">{{request.user.username}}</h4>
@@ -88,10 +99,10 @@
                                 <figure class="avatar me-3">
                                     {% if post.author.avatar %}
                                     <img src="{{post.author.avatar.url}}" alt="image"
-                                        class="shadow-sm rounded-circle w45">
+                                        class="shadow-sm avatar rounded-circle w45">
                                     {% else %}
                                     <img src="{% static 'images/blank-profile.jpg'  %}" alt="image"
-                                        class="shadow-sm rounded-circle w45">
+                                        class="shadow-sm avatar rounded-circle w45">
                                     {% endif %}
                                 </figure>
                                 <h4 class="fw-700 text-grey-900 font-xssss mt-1">{{post.author.username}} <span
