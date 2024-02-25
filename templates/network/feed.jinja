@@ -8,7 +8,7 @@
 
 <div class="main-wrapper">
 
-    {% include '../components/_nav.jinja' %}
+    {% include '../components/_nav.jinja' with page=request.path %}
     {% include '../components/_left.jinja' %}
 
     <!-- main content -->
@@ -99,8 +99,10 @@
                             </div>
                             <div class="card-body p-0 me-lg-5">
                                 <p class="fw-500 text-grey-500 lh-26 font-xssss w-100">
-                                    {{post.media}}
-                                    {{post.message|safe}}
+                                    <a class="text-dark" href="/posts/{{post.author.username}}/{{post.slug}}/">
+                                        {{post.media}}
+                                        {{post.message|safe}}
+                                    </a>
                                 </p>
                             </div>
                             <div class="card-body d-block p-0">
@@ -113,26 +115,14 @@
                                 </div>
                             </div>
                             <div class="card-body d-flex p-0 mt-3">
-                                <a href="#"
-                                    class="emoji-bttn d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss me-2"><i
-                                        class="feather-thumbs-up text-white bg-primary-gradiant me-1 btn-round-xs font-xss"></i>0
+                                <a href="/posts/like-post/{{post.slug}}/"
+                                    class="d-flex like-button-main align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss me-2"><i
+                                        class="feather-thumbs-up text-white bg-primary-gradiant me-1 btn-round-xs font-xss"></i>{{post.likes.count}}
                                     Like</a>
-                                <div class="emoji-wrap">
-                                    <ul class="emojis list-inline mb-0">
-                                        <li class="emoji list-inline-item"><i class="em em---1"></i> </li>
-                                        <li class="emoji list-inline-item"><i class="em em-angry"></i></li>
-                                        <li class="emoji list-inline-item"><i class="em em-anguished"></i> </li>
-                                        <li class="emoji list-inline-item"><i class="em em-astonished"></i> </li>
-                                        <li class="emoji list-inline-item"><i class="em em-blush"></i></li>
-                                        <li class="emoji list-inline-item"><i class="em em-clap"></i></li>
-                                        <li class="emoji list-inline-item"><i class="em em-cry"></i></li>
-                                        <li class="emoji list-inline-item"><i class="em em-full_moon_with_face"></i>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <a class="d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"><i
+                                <a
+                                    class="d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"><i
                                         class="feather-message-circle text-dark text-grey-900 btn-round-sm font-lg"></i><span
-                                        class="d-none-xss">0 Comment</span></a>
+                                        class="d-none-xss">{{post.comments.count}} Comment</span></a>
                                 <a href="#" id="dropdownMenu21" data-bs-toggle="dropdown" aria-expanded="false"
                                     class="ms-auto d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"><i
                                         class="feather-share-2 text-grey-900 text-dark btn-round-sm font-lg"></i><span

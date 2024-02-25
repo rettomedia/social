@@ -1,0 +1,144 @@
+{% extends 'base.jinja' %}
+{% load static %}
+{% block title %}{{post.message}} - {{post.author.username}}{% endblock %}
+
+{% block styles %}
+<style>
+    .kart {
+        border: 1px solid rgb(236, 236, 236) !important;
+        margin: 10px;
+        padding: 15px;
+        border-radius: 10px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="preloader"></div>
+
+<div class="main-wrapper">
+    {% include '../components/_nav.jinja' %}
+
+    <div class="main-content right-chat-active">
+
+        <div class="middle-sidebar-bottom">
+            <div class="middle-sidebar-left pe-0 ps-lg-3 ms-0 me-0" style="max-width: 100%;">
+                <div class="row">
+
+
+                    <div class="col-lg-12">
+                        <div class="p-0 w-100 bg-white theme-dark-bg">
+                            <div class="pt-0 w-100">
+                                <div class="chat-body p-lg-4 p-3 mt-lg-3 mt-0">
+                                    <div class="card dark-bg-transparent border-0 w-100 p-0 mb-3 shadow-none">
+                                        <div class="card-body p-0">
+                                            <h6 class="fw-600 text-grey-500 font-xsssss">Today, 16th September 2020,
+                                                11:45 </h6>
+                                            <h2 class="font-sm text-grey-900 fw-600">Meeting World</h2>
+                                        </div>
+                                    </div>
+                                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                        <div class="panel panel-default p-0 bg-transparent rounded-0">
+                                            <div class="panel-heading  pb-2" role="tab" id="headingOne">
+                                                <a
+                                                    class="panel-title fw-400 mb-0 icon-none d-flex justify-content-between pe-0">
+                                                    <figure class="avatar me-2 mb-0 w35 mt-1 pt-1">
+                                                        {% if post.author.avatar %}
+                                                        <img src="{{post.author.avatar.url}}" alt="image"
+                                                            class="float-right shadow-sm rounded-circle w-100">
+                                                        {% else %}
+                                                        <img src="{% static 'images/blank-profile.jpg' %}" alt="image"
+                                                            class="float-right shadow-sm rounded-circle w-100">
+                                                        {% endif %}
+                                                    </figure>
+                                                    <span
+                                                        class="font-xssss text-grey-700 pt-2 mt-1 ps-2 fw-700 mb-0 me-auto text-dark">{{post.author.username}}</span>
+                                                    <small
+                                                        class="font-xssss text-grey-500 pt-2 mt-1 ps-2 fw-600 mb-0 ms-auto">{{post.writed_at}}</small>
+
+                                                </a>
+                                            </div>
+                                            <div style="">
+                                                <p class="text-grey-600 mb-4 font-xsss lh-28 fw-500 mt-3">
+                                                    {{post.message}}
+                                                    {{post.media}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <br><br><br><br>
+                            <div class="dark-bg p-3 mb-3 border-top border-bottom bor-0 theme-dark-bg"
+                                style="width: 98%;">
+                                <h3>Comments</h3>
+
+                                <div class="comments" id="comments">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            {% for comment in comments %}
+                                            <div class="kart mb-4">
+                                                <div class="kart-body">
+                                                    <p>
+                                                        {{comment.message}}
+                                                    </p>
+
+                                                    <div class="d-flex justify-content-between">
+                                                        <div class="d-flex flex-row align-items-center">
+                                                            {% if comment.author.avatar %}
+                                                            <img src="{{comment.author.avatar.url}}"
+                                                                alt="avatar" width="25" height="25" />
+                                                            {% else %}
+                                                            <img src="{% static 'images/blank-profile.jpg' %}"
+                                                                alt="avatar" width="25" height="25" />
+                                                            {% endif %}
+                                                            <p class="small mb-0 ms-2">{{comment.author.username}}</p>
+                                                        </div>
+                                                        {% if comment.author == request.user %}
+                                                        <a href="/posts/delete-comment/{{comment.id}}" class="d-flex flex-row align-items-center">
+                                                            <p class="small text-muted mb-0">Delete</p>
+                                                            <i class="far fa-thumbs-up mx-2 fa-xs text-black"
+                                                                style="margin-top: -0.16rem;"></i>
+                                                        </a>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {% endfor %}
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                {% if request.user.is_authenticated %}
+                                <form method="post" class="chat-form d-block overflow-hidden">
+                                    {% csrf_token %}
+                                    <textarea rows="3"
+                                        class="bg-grey border-0 lh-32 pt-2 pb-2 ps-5 pe-3 font-xssss text-dark fw-500 rounded-xl w-75 w350 theme-dark-bg"
+                                        name="comment" id="comment" placeholder="Send comment..." type="text"></textarea>
+                                    <br><br>
+                                    <button type="submit"
+                                        class="bg-current border-0 p-0 float-right w200 text-white fw-600 font-xssss text-uppercase">Send</button>
+                                </form>
+                                {% else %}
+                                <br><br>
+                                Do you want to send comment? <a href="/login/">Login</a>.
+                                {% endif %}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    {% include '../components/_right-chat.jinja' %}
+    {% include '../components/_footer.jinja' %}
+</div>
+
+{% include '../components/_chat-popup.jinja' %}
+{% endblock %}

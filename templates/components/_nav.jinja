@@ -13,10 +13,15 @@
         <button class="nav-menu me-0 ms-2"></button>
     </div>
 
-    <form action="#" class="float-left header-search">
+    <form class="float-left header-search">
         <div class="form-group mb-0 icon-input">
             <i class="feather-search font-sm text-grey-400"></i>
-            <input type="text" placeholder="Start typing to search.."
+            <input type="text" placeholder="Start typing to search.." id="search" 
+                {% if request.path == "/" %}
+                name="search" 
+                {% elif request.path == "/account/friend-list/" %} 
+                name="search" 
+                {% endif %}
                 class="bg-grey border-0 lh-32 pt-2 pb-2 ps-5 pe-3 font-xssss fw-500 rounded-xl w350 theme-dark-bg">
         </div>
     </form>
@@ -27,6 +32,7 @@
 
     <a href="#" class="p-2 text-center ms-auto menu-icon" id="dropdownMenu3" data-bs-toggle="dropdown"
         aria-expanded="false"></a>
+    {% if request.user.is_authenticated %}
     <a href="#" class="p-2 text-center ms-3 menu-icon chat-active-btn"><i
             class="feather-message-square font-xl text-current"></i></a>
     <div class="p-2 text-center ms-3 position-relative dropdown-menu-icon menu-icon cursor-pointer">
@@ -133,7 +139,6 @@
         </div>
     </div>
 
-
     <a href="/account/settings/" class="p-0 ms-3 menu-icon">
         {% if request.user.avatar %}
         <img style="border-radius: 100%;" src="{{request.user.avatar.url}}" alt="user" class="w40 mt--1">
@@ -141,6 +146,7 @@
         <img src="{% static 'images/blank-profile.jpg' %}" alt="user" class="w40 mt--1" style="border-radius: 100%;">
         {% endif %}
     </a>
+    {% endif %}
 
 </div>
 <!-- navigation top -->

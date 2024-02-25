@@ -16,6 +16,13 @@ def friend_list(request):
         Q(to_user=request.user), is_accepted=False
     )
 
+    search = request.GET.get('search')
+    if search:
+        friend_list = friend_list.filter(
+            Q(from_user__username__contains=search) |
+            Q(to_user__username__contains=search)
+        ).distinct()
+
     return render(request, 'account/friend-list.jinja', context={
         'friend_list':friend_list,
         'friend_requests':friend_requests,

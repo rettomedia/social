@@ -5,7 +5,8 @@ from posts.models import Post
 
 class Like(models.Model):
     from_user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, blank=True, null=True)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, blank=True, null=True)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, blank=True, null=True, related_name='likes')
+    liked_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         db_table = 'like'
@@ -13,4 +14,4 @@ class Like(models.Model):
         verbose_name_plural = 'Likes'
 
     def __str__(self):
-        return self.from_user
+        return self.from_user.username
