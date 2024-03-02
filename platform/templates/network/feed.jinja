@@ -115,14 +115,13 @@
                                 </div>
                             </div>
                             <div class="card-body d-flex p-0 mt-3">
-                                <a href="/posts/like-post/{{post.slug}}/"
+                                <button data-post-slug="{{post.slug}}" style="background: none !important;border: none !important"
                                     class="d-flex like-button-main align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss me-2"><i
-                                        class="feather-thumbs-up text-white bg-primary-gradiant me-1 btn-round-xs font-xss"></i>{{post.likes.count}}
-                                    Like</a>
+                                        class="feather-thumbs-up text-white bg-primary-gradiant me-1 btn-round-xs font-xss"></i><span id="likes-count-{{post.slug}}">{{post.likes.count}} </span></button>
                                 <a
                                     class="d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"><i
                                         class="feather-message-circle text-dark text-grey-900 btn-round-sm font-lg"></i><span
-                                        class="d-none-xss">{{post.comments.count}} Comment</span></a>
+                                        class="d-none-xss">{{post.comments.count}} </span></a>
                                 <a href="#" id="dropdownMenu21" data-bs-toggle="dropdown" aria-expanded="false"
                                     class="ms-auto d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"><i
                                         class="feather-share-2 text-grey-900 text-dark btn-round-sm font-lg"></i><span

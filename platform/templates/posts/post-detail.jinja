@@ -60,8 +60,18 @@
                                             </div>
                                             <div style="">
                                                 <p class="text-grey-600 mb-4 font-xsss lh-28 fw-500 mt-3">
-                                                    {{post.message}}
-                                                    {{post.media}}
+                                                    <div class="card" style="border: none !important">
+                                                        <div class="card-body">
+                                                            <p>
+                                                                {{post.message}}
+                                                            </p>
+                                                        </div>
+                                                        {% if post.image %}
+                                                        <div class="card-body">
+                                                            <img src="{{post.image.url}}" class="w-25">
+                                                        </div>
+                                                        {% endif %}
+                                                    </div>
                                                 </p>
                                             </div>
                                         </div>
@@ -69,7 +79,7 @@
 
                                 </div>
                             </div>
-                            <br><br><br><br>
+                            <br><br>
                             <div class="dark-bg p-3 mb-3 border-top border-bottom bor-0 theme-dark-bg"
                                 style="width: 98%;">
                                 <h3>Comments</h3>
@@ -78,7 +88,7 @@
                                     <div class="row">
                                         <div class="col-8">
                                             {% for comment in comments %}
-                                            <div class="kart mb-4">
+                                            <div class="kart mb-4" style="border-radius: 25px;">
                                                 <div class="kart-body">
                                                     <p>
                                                         {{comment.message}}
@@ -88,10 +98,12 @@
                                                         <div class="d-flex flex-row align-items-center">
                                                             {% if comment.author.avatar %}
                                                             <img src="{{comment.author.avatar.url}}"
-                                                                alt="avatar" width="25" height="25" />
+                                                                alt="avatar" width="25" height="25"
+                                                                class="rounded-circle" />
                                                             {% else %}
                                                             <img src="{% static 'images/blank-profile.jpg' %}"
-                                                                alt="avatar" width="25" height="25" />
+                                                                alt="avatar" width="25" height="25"
+                                                                class="rounded-circle" />
                                                             {% endif %}
                                                             <p class="small mb-0 ms-2">{{comment.author.username}}</p>
                                                         </div>
@@ -113,10 +125,12 @@
                                 </div>
 
                                 {% if request.user.is_authenticated %}
+                                <hr>
                                 <form method="post" class="chat-form d-block overflow-hidden">
                                     {% csrf_token %}
                                     <textarea rows="3"
-                                        class="bg-grey border-0 lh-32 pt-2 pb-2 ps-5 pe-3 font-xssss text-dark fw-500 rounded-xl w-75 w350 theme-dark-bg"
+                                        class="bg-grey border-0 lh-32 pt-2 pb-2 ps-3 pe-3 font-xssss text-dark fw-500 w-75 w350 theme-dark-bg"
+                                        style="border-radius: 10px;"
                                         name="comment" id="comment" placeholder="Send comment..." type="text"></textarea>
                                     <br><br>
                                     <button type="submit"
