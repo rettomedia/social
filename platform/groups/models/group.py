@@ -21,3 +21,6 @@ class Group(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def is_member(self, user):
+        return self.members.filter(user=user).exists()

@@ -33,8 +33,7 @@
                             {% for group in groups %}
                             <div class="col-md-6 col-sm-6 pe-2 ps-2">
                                 <div class="card d-block border-0 shadow-xss rounded-3 overflow-hidden mb-3">
-                                    <div class="card-body position-relative h100 bg-image-cover bg-image-center"
-                                        style="
+                                    <div class="card-body position-relative h100 bg-image-cover bg-image-center" style="
                                         {% if group.background %}
                                         background-image: url({{group.background.url}});
                                         {% else %}
@@ -55,14 +54,29 @@
                                         </figure>
                                         <div class="clearfix"></div>
                                         <h4 class="fw-700 font-xsss mt-3 mb-1">{{group.title}}</h4>
-                                        <p class="fw-500 font-xsssss text-grey-500 mt-0 mb-3">Owned by {{group.owned_by}}
-                                        <br>
-                                        {{group.members.count}} Members
+                                        <p class="fw-500 font-xsssss text-grey-500 mt-0 mb-3">Owned by
+                                            {{group.owned_by}}
+                                            <br>
+                                            {{group.members.count}} Members
                                         </p>
+                                        {% if group.id in user_groups %}
+                                        {% if request.user == group.owned_by %}
                                         <span class="position-absolute right-15 top-0 d-flex align-items-center">
-                                            <a href="#"
+                                            <a href="/groups/group-settings/{{ group.slug }}/"
+                                                class="text-center p-2 lh-24 w100 ms-1 ls-3 d-inline-block rounded-xl bg-current font-xsssss fw-700 ls-lg text-white">SETTINGS</a>
+                                        </span>
+                                        {% else %}
+                                        <span class="position-absolute right-15 top-0 d-flex align-items-center">
+                                            <a href="/groups/leave-group/{{ group.slug }}/"
+                                                class="text-center p-2 lh-24 w100 ms-1 ls-3 d-inline-block rounded-xl bg-current font-xsssss fw-700 ls-lg text-white">LEAVE</a>
+                                        </span>
+                                        {% endif %}
+                                        {% else %}
+                                        <span class="position-absolute right-15 top-0 d-flex align-items-center">
+                                            <a href="/groups/join-group/{{ group.slug }}/"
                                                 class="text-center p-2 lh-24 w100 ms-1 ls-3 d-inline-block rounded-xl bg-current font-xsssss fw-700 ls-lg text-white">JOIN</a>
                                         </span>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
