@@ -2,7 +2,8 @@
 <div class="app-header-search">
     <form class="search-form">
         <div class="form-group searchbox mb-0 border-0 p-1">
-            <input type="text" class="form-control border-0" placeholder="Search...">
+            <input id="search" type="text" class="form-control border-0" placeholder="Search..." {% if request.path=="/"
+                %} name="search" {% elif request.path=="/account/friend-list/" %} name="search" {% endif %}>
             <i class="input-icon">
                 <ion-icon name="search-outline" role="img" class="md hydrated" aria-label="search outline"></ion-icon>
             </i>
