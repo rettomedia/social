@@ -12,7 +12,9 @@ def like_post(request, post_slug):
     post = get_object_or_404(Post, slug=post_slug)
     
     if Like.objects.filter(from_user=request.user, post=post).exists():
-        return JsonResponse({'message': 'Post already liked.'})
+        Like.objects.filter(from_user=request.user, post=post).delete()
+        likes_count = post.likes.count()
+        return JsonResponse({'message': 'Post unliked successfully.', 'likes_count': likes_count})
     
     else:
         Like.objects.create(
