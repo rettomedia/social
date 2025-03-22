@@ -8,7 +8,7 @@ from django.core.paginator import Paginator
 def index(request):
     if request.user.is_authenticated:
         news = News.objects.all()
-        posts = Post.objects.all()
+        posts = Post.objects.all().order_by('-id')
 
         # search
         search = request.GET.get('search')
