@@ -13,14 +13,12 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6 col-md-8 text-center default-page vh-100 align-items-center d-flex">
                     <div class="card border-0 text-center d-block p-0">
-                        <img src="images/bg-43.png" alt="icon" class="w200 mb-4 ms-auto me-auto pt-md-5">
-                        <h1 class="fw-700 text-grey-900 display3-size display4-md-size">Oops! It looks like you're lost.
+                        <img src="{% static 'images/bg-43.png' %}" alt="icon" class="w200 mb-4 ms-auto me-auto pt-md-5">
+                        <h1 class="fw-700 text-grey-900 display3-size display4-md-size">Galiba kayboldun!
                         </h1>
-                        <p class="text-grey-500 font-xsss">The page you're looking for isn't available. Try to search
-                            again or use the go to.</p>
-                        <a href="index.html"
-                            class="p-3 w175 bg-current text-white d-inline-block text-center fw-600 font-xssss rounded-3 text-uppercase ls-3">Home
-                            Page</a>
+                        <p class="text-grey-500 font-xsss">Aradığın sayfa Retto bünyesinde barınmıyor. Daha dikkatli aramayı deneyebilirsin.</p>
+                        <a href="/"
+                            class="p-3 w175 bg-current text-white d-inline-block text-center fw-600 font-xssss rounded-3 text-uppercase ls-3">Ana Sayfa</a>
                     </div>
                 </div>
             </div>
@@ -39,10 +37,10 @@
         $('.timer').countdown('2021/6/31', function (event) {
             var $this = $(this).html(event.strftime(''
                 // + '<span>%w</span> weeks '
-                + '<div class="time-count"><span class="text-time">%d</span> <span class="text-day">Day</span></div> '
-                + '<div class="time-count"><span class="text-time">%H</span> <span class="text-day">Hours</span> </div> '
-                + '<div class="time-count"><span class="text-time">%M</span> <span class="text-day">Min</span> </div> '
-                + '<div class="time-count"><span class="text-time">%S</span> <span class="text-day">Sec</span> </div> '));
+                + '<div class="time-count"><span class="text-time">%d</span> <span class="text-day">Gün</span></div> '
+                + '<div class="time-count"><span class="text-time">%H</span> <span class="text-day">Saat</span> </div> '
+                + '<div class="time-count"><span class="text-time">%M</span> <span class="text-day">Dakika</span> </div> '
+                + '<div class="time-count"><span class="text-time">%S</span> <span class="text-day">Saniye</span> </div> '));
         });
     });
 </script>
