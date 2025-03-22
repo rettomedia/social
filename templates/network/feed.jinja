@@ -2,17 +2,6 @@
 {% load static %}
 {% block title %}Feed{% endblock %}
 
-{% block styles %}
-<style>
-.verified-icon {
-    width: 16px;   /* Resmin genişliği */
-    height: 16px;  /* Resmin yüksekliği */
-    vertical-align: middle;  /* Yüksekliğini hizalamak için */
-    margin-left: 5px;  /* Kullanıcı adı ve resim arasına biraz boşluk eklemek için */
-}
-</style>
-{% endblock %}
-
 {% block content %}
 
 <div class="preloader"></div>
@@ -105,11 +94,8 @@
                                         class="shadow-sm rounded-circle w45">
                                     {% endif %}
                                 </figure>
-                                <h4 class="fw-700 text-grey-900 font-xssss mt-1">
-                                    <a class="text-dark" href="/@{{post.author.username}}/">{{post.author.username}}</a>
-                                    <img src="{% static 'images/admincheck.png' %}" alt="Verified"
-                                        class="verified-icon">
-                                    <span
+                                <h4 class="fw-700 text-grey-900 font-xssss mt-1"><a class="text-dark"
+                                        href="/@{{post.author.username}}/">{{post.author.username}}</a> <span class="badge badge-pill badge-danger"><i class="bi bi-tools"></i></span><span
                                         class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">{{post.edited_at}}</span>
                                 </h4>
                             </div>
