@@ -40,7 +40,7 @@
                                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                                         <div class="panel panel-default p-0 bg-transparent rounded-0">
                                             <div class="panel-heading  pb-2" role="tab" id="headingOne">
-                                                <a
+                                                <a href="/@{{post.author.username}}"
                                                     class="panel-title fw-400 mb-0 icon-none d-flex justify-content-between pe-0">
                                                     <figure class="avatar me-2 mb-0 w35 mt-1 pt-1">
                                                         {% if post.author.avatar %}
@@ -52,7 +52,11 @@
                                                         {% endif %}
                                                     </figure>
                                                     <span
-                                                        class="font-xssss text-grey-700 pt-2 mt-1 ps-2 fw-700 mb-0 me-auto text-dark">{{post.author.username}}</span>
+                                                        class="font-xssss text-grey-700 pt-2 mt-1 ps-2 fw-700 mb-0 me-auto text-dark">{{post.author.username}}  
+                                                        {% if post.author.is_staff %}
+                                                        <span class="badge badge-pill badge-danger"><i class="bi bi-tools"></i></span>
+                                                        {% endif %}
+                                                        </span>
                                                     <small
                                                         class="font-xssss text-grey-500 pt-2 mt-1 ps-2 fw-600 mb-0 ms-auto">{{post.writed_at}}</small>
 
@@ -105,7 +109,11 @@
                                                                 alt="avatar" width="25" height="25"
                                                                 class="rounded-circle" />
                                                             {% endif %}
-                                                            <p class="small mb-0 ms-2">{{comment.author.username}}</p>
+                                                            <p class="small mb-0 ms-2"><a href="/@{{comment.author.username}}" class="text-black">{{comment.author.username}}  </a>
+                                                            {% if comment.author.is_staff %}
+                                                            <span class="badge badge-pill badge-danger"><i class="bi bi-tools"></i></span>
+                                                            {% endif %}
+                                                            </p>
                                                         </div>
                                                         {% if comment.author == request.user %}
                                                         <a href="/posts/delete-comment/{{comment.id}}" class="d-flex flex-row align-items-center">

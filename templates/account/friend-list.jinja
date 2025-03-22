@@ -112,9 +112,9 @@
                                         <div class="clearfix"></div>
                                         <h4 class="fw-700 font-xsss mt-3 mb-1">
                                             {% if friend.to_user == request.user %}
-                                                {{friend.from_user.username}}
+                                                <a class="text-black" href="/@{{friend.from_user.username}}">{{friend.from_user.username}}</a>
                                             {% elif friend.from_user == request.user %}
-                                                {{friend.to_user.username}}
+                                                <a class="text-black" href="/@{{friend.to_user.username}}">{{friend.to_user.username}}</a>
                                             {% endif %}
                                         </h4>
                                         <p class="fw-500 font-xsssss text-grey-500 mt-0 mb-3">
