@@ -8,14 +8,12 @@ from django.db.models import Q
 @login_required
 def accept_friend(request, username):
     user = get_object_or_404(CustomUser, username=username)
+    
     if user != request.user:
-        friend_request = get_object_or_404(
-            Friend,
-            Q(from_user=user) |
-            Q(to_user=user), is_accepted=False
-        )
+        Friend.objects.filter(
+            Q(from_user=user, to_user=request.user) |
+            Q(from_user=request.user, to_user=user),
+            is_accepted=False
+        ).update(is_accepted=True)  # Tüm uygun kayıtları günceller
 
-        friend_request.is_accepted = True
-        friend_request.save()
-
-        return redirect('friend_list')
+    return redirect('friend_list')
