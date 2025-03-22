@@ -62,22 +62,33 @@
 
                                                 </a>
                                             </div>
-                                            <div style="">
+                                            <div>
                                                 <p class="text-grey-600 mb-4 font-xsss lh-28 fw-500 mt-3">
                                                     <div class="card" style="border: none !important">
                                                         <div class="card-body">
-                                                            <p>
-                                                                {{post.message}}
-                                                            </p>
+                                                            <p>{{ post.message }}</p>
                                                         </div>
+                                                        
                                                         {% if post.image %}
-                                                        <div class="card-body">
-                                                            <img src="{{post.image.url}}" class="w-25">
-                                                        </div>
+                                                            {% with post.image.url|lower as img_url %}
+                                                                {% if img_url|slice:"-3:" == "mp4" or img_url|slice:"-3:" == "mov" or img_url|slice:"-3:" == "avi" or img_url|slice:"-3:" == "mkv" or img_url|slice:"-4:" == "webm" %}
+                                                                    <div class="card-body">
+                                                                        <video class="w-100 rounded" controls>
+                                                                            <source src="{{ post.image.url }}" type="video/mp4">
+                                                                            Tarayıcınız video etiketini desteklemiyor.
+                                                                        </video>
+                                                                    </div>
+                                                                {% else %}
+                                                                    <div class="card-body">
+                                                                        <img src="{{ post.image.url }}" class="w-25 rounded">
+                                                                    </div>
+                                                                {% endif %}
+                                                            {% endwith %}
                                                         {% endif %}
                                                     </div>
                                                 </p>
                                             </div>
+
                                         </div>
                                     </div>
 
