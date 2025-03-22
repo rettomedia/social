@@ -43,10 +43,10 @@
                                 <div
                                     class="d-flex align-items-center justify-content-center position-absolute-md right-15 top-0 me-2">
                                     {% if friend_request_sent %}
-                                    <a href="/account/add-friend/{{user.username}}/"
+                                    <a
                                         class="d-none d-lg-block bg-success p-3 z-index-1 rounded-3 text-white font-xsssss text-uppercase fw-700 ls-3">Request Pending</a>
                                     {% elif is_friend %}
-                                    <a href="/account/add-friend/{{user.username}}/"
+                                    <a
                                         class="d-none d-lg-block bg-success p-3 z-index-1 rounded-3 text-white font-xsssss text-uppercase fw-700 ls-3">Message</a>
                                     {% else %}
                                     <a href="/account/add-friend/{{user.username}}/"

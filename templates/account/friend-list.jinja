@@ -29,7 +29,7 @@
                                             {% if friend.to_user == request.user %}
                                                 {% if friend.from_user.avatar %}
                                                     <img
-                                                src="{{friend.from_user.avatar}}" alt="image"
+                                                src="{{friend.from_user.avatar.url}}" alt="image"
                                                 class="float-right p-0 bg-white avatar rounded-circle w-100 shadow-xss">
                                                 {% else %}
                                                 <img
@@ -39,7 +39,7 @@
                                             {% elif friend.from_user == request.user %}
                                                 {% if friend.to_user.avatar  %}
                                                 <img
-                                                src="{{friend.to_user.avatar}}" alt="image"
+                                                src="{{friend.to_user.avatar.url}}" alt="image"
                                                 class="float-right p-0 bg-white rounded-circle w-100 shadow-xss">
                                                 {% else %}
                                                 <img
@@ -90,7 +90,7 @@
                                             {% if friend.to_user == request.user %}
                                                 {% if friend.from_user.avatar %}
                                                     <img
-                                                src="{{friend.from_user.avatar}}" alt="image"
+                                                src="{{friend.from_user.avatar.url}}" alt="image"
                                                 class="float-right p-0 bg-white rounded-circle w-100 shadow-xss">
                                                 {% else %}
                                                 <img
@@ -100,7 +100,7 @@
                                             {% elif friend.from_user == request.user %}
                                                 {% if friend.to_user.avatar  %}
                                                 <img
-                                                src="{{friend.to_user.avatar}}" alt="image"
+                                                src="{{friend.to_user.avatar.url}}" alt="image"
                                                 class="float-right p-0 bg-white rounded-circle w-100 shadow-xss">
                                                 {% else %}
                                                 <img

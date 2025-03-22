@@ -4,3 +4,7 @@ __pycache__
 CACHE
 .env
 db.sqlite3
+media
+*.jpg
+*.png
+*.jpeg
