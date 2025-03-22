@@ -10,3 +10,4 @@ from .accept_friend import accept_friend
 from .reject_friend import reject_friend
 from .edit_profile import edit_profile
 from .change_password import change_password
+from .cancel_request import cancel_request
