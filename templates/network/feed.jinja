@@ -103,10 +103,15 @@
                                         class="shadow-sm rounded-circle w45">
                                     {% endif %}
                                 </figure>
-                                <h4 class="fw-700 text-grey-900 font-xssss mt-1"><a class="text-dark"
-                                        href="/@{{post.author.username}}/">{{post.author.username}}</a> <span class="badge badge-pill badge-danger"><i class="bi bi-tools"></i></span><span
+                                <h4 class="fw-700 text-grey-900 font-xssss mt-1">
+                                    <a class="text-dark" href="/@{{post.author.username}}/">{{post.author.username}}</a>
+                                    {% if post.author.is_staff %} <!-- Eğer kullanıcı staff ise -->
+                                    <span class="badge badge-pill badge-danger"><i class="bi bi-tools"></i></span>
+                                    {% endif %}
+                                    <span
                                         class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">{{post.edited_at}}</span>
                                 </h4>
+
                             </div>
                             <div class="card-body p-0 me-lg-5">
                                 <p class="fw-500 text-grey-500 lh-26 font-xssss w-100">
