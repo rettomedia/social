@@ -2,7 +2,33 @@
 {% load static %}
 {% block title %}Feed{% endblock %}
 
+{% block styles %}
+<style>
+    .verified-badge {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        background-color: red;
+        border-radius: 50%;
+        position: relative;
+        top: -3px;
+        left: 5px;
+    }
+
+    .verified-badge::before {
+        content: '✓';
+        /* Tick mark */
+        font-size: 10px;
+        color: white;
+        position: absolute;
+        top: -1px;
+        left: 2px;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
+
 <div class="preloader"></div>
 
 
@@ -93,7 +119,9 @@
                                         class="shadow-sm rounded-circle w45">
                                     {% endif %}
                                 </figure>
-                                <h4 class="fw-700 text-grey-900 font-xssss mt-1"><a class="text-dark" href="/@{{post.author.username}}/">{{post.author.username}}</a> <span
+                                <h4 class="fw-700 text-grey-900 font-xssss mt-1"><a class="text-dark"
+                                        href="/@{{post.author.username}}/">{{post.author.username}}</a> <span
+                                        class="verified-badge"></span><span
                                         class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">{{post.edited_at}}</span>
                                 </h4>
                             </div>
@@ -107,7 +135,8 @@
                             </div>
                             <div class="card-body d-block p-0">
                                 <div class="row ps-2 pe-2">
-                                    <div class="col-xs-4 col-sm-4 p-1"><a href="/posts/{{post.author.username}}/{{post.slug}}/">
+                                    <div class="col-xs-4 col-sm-4 p-1"><a
+                                            href="/posts/{{post.author.username}}/{{post.slug}}/">
                                             {% if post.image %}
                                             <img src="{{post.image.url}}" class="rounded-3 w-75" alt="image">
                                             {% endif %}
@@ -115,11 +144,12 @@
                                 </div>
                             </div>
                             <div class="card-body d-flex p-0 mt-3">
-                                <button data-post-slug="{{post.slug}}" style="background: none !important;border: none !important"
+                                <button data-post-slug="{{post.slug}}"
+                                    style="background: none !important;border: none !important"
                                     class="d-flex like-button-main align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss me-2"><i
-                                        class="feather-thumbs-up text-white bg-primary-gradiant me-1 btn-round-xs font-xss"></i><span id="likes-count-{{post.slug}}">{{post.likes.count}} </span></button>
-                                <a
-                                    class="d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"><i
+                                        class="feather-thumbs-up text-white bg-primary-gradiant me-1 btn-round-xs font-xss"></i><span
+                                        id="likes-count-{{post.slug}}">{{post.likes.count}} </span></button>
+                                <a class="d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"><i
                                         class="feather-message-circle text-dark text-grey-900 btn-round-sm font-lg"></i><span
                                         class="d-none-xss">{{post.comments.count}} </span></a>
                                 <a href="#" id="dropdownMenu21" data-bs-toggle="dropdown" aria-expanded="false"
@@ -159,9 +189,11 @@
                                                         class="font-xs feather-phone text-white"></i></a></li>
                                         </ul>
                                     </div>
-                                    <h4 class="fw-700 font-xssss mt-4 text-grey-500 d-flex align-items-center mb-3">Share
+                                    <h4 class="fw-700 font-xssss mt-4 text-grey-500 d-flex align-items-center mb-3">
+                                        Share
                                         Link</h4>
-                                    <input type="text" value="https://retto.social/posts/{{post.author.username}}/{{post.slug}}"
+                                    <input type="text"
+                                        value="https://retto.social/posts/{{post.author.username}}/{{post.slug}}"
                                         class="bg-grey text-grey-500 font-xssss border-0 lh-32 p-2 font-xssss fw-600 rounded-3 w-100 theme-dark-bg">
                                 </div>
                             </div>
