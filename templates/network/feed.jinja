@@ -2,6 +2,18 @@
 {% load static %}
 {% block title %}Feed{% endblock %}
 
+{% block styles %}
+<style>
+.post-body-main p {
+    display: -webkit-box;
+    -webkit-line-clamp: 7; /* 10 satır limit */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+</style>
+{% endblock %}
+
 {% block content %}
 
 <div class="preloader"></div>
@@ -136,11 +148,11 @@
                                 </h4>
 
                             </div>
-                            <div class="card-body p-0 me-lg-5">
+                            <div class="card-body post-body-main p-0 me-lg-5">
                                 <p class="fw-500 text-grey-500 lh-26 font-xssss w-100">
                                     <a class="text-dark" href="/posts/{{post.author.username}}/{{post.slug}}/">
                                         {{post.media}}
-                                        {{post.message|linebreaksbr|safe}}
+                                        {{post.message|linebreaksbr}}
                                     </a>
                                 </p>
                             </div>
