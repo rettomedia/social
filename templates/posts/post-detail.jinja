@@ -91,10 +91,17 @@
 
                                         </div>
                                     </div>
-
+                                    
                                 </div>
-                            </div>
+                            </div>  
                             <br><br>
+                            <div class="p-3 mb-3 bor-0" style="width: 98%;">
+                                                    <br><br>
+                                                    <h3>Likes</h3>
+                                                    <button data-post-slug="{{post.slug}}" style="background: none !important;border: none !important"
+                                                class="d-flex like-button-main align-items-center fw-600 {% if post.id in user_liked_posts %}bg-primary-gradiant text-white{% else %}bg-light text-dark{% endif %} lh-26 font-xssss me-2"><i
+                                                    class="feather-thumbs-up {% if post.id in user_liked_posts %}bg-primary-gradiant text-white{% else %}bg-light text-dark{% endif %} me-1 btn-round-xs font-xss"></i><span id="likes-count-{{post.slug}}" class="text-dark">{{post.likes.count}} </span></button>
+                                                    </div>
                             <div class="dark-bg p-3 mb-3 border-top border-bottom bor-0 theme-dark-bg"
                                 style="width: 98%;">
                                 <h3>Comments</h3>

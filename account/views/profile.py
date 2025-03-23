@@ -5,7 +5,7 @@ from posts.models import Post
 
 @login_required
 def profile(request):
-    posts = Post.objects.filter(author=request.user)
+    posts = Post.objects.filter(author=request.user).order_by('-id')
 
     return render(request, 'account/profile.jinja', context={
         'user':request.user,

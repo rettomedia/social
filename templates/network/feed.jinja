@@ -156,10 +156,13 @@
 
                             <div class="card-body d-flex p-0 mt-3">
                                 <button data-post-slug="{{post.slug}}"
-                                    style="background: none !important;border: none !important"
-                                    class="d-flex like-button-main align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss me-2"><i
-                                        class="feather-thumbs-up text-white bg-primary-gradiant me-1 btn-round-xs font-xss"></i><span
-                                        id="likes-count-{{post.slug}}">{{post.likes.count}} </span></button>
+                                        style="background: none !important; border: none !important"
+                                        class="d-flex like-button-main align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss me-2">
+                                    <i class="feather-thumbs-up btn-round-xs font-xss 
+                                            {% if post.id in user_liked_posts %}bg-primary-gradiant text-white{% else %}bg-light text-dark{% endif %}">
+                                    </i>&nbsp;
+                                    <span id="likes-count-{{ post.slug }}">{{ post.like_count }}</span>
+                                </button>
                                 <a class="d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"><i
                                         class="feather-message-circle text-dark text-grey-900 btn-round-sm font-lg"></i><span
                                         class="d-none-xss">{{post.comments.count}} </span></a>

@@ -81,6 +81,25 @@
             });
         });
 
+
+        // Like background
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".like-button-main").forEach(button => {
+                button.addEventListener("click", function () {
+                    let likeIcon = this.querySelector("i"); // Like ikonunu al
+
+                    // Eğer icon'un arka plan rengi mavi değilse, mavi yap
+                    if (likeIcon.classList.contains("bg-light")) {
+                        likeIcon.classList.remove("bg-light", "text-dark");
+                        likeIcon.classList.add("bg-primary-gradiant", "text-white");
+                    } else {
+                        // Eğer mavi ise, tekrar gri yap
+                        likeIcon.classList.remove("bg-primary-gradiant", "text-white");
+                        likeIcon.classList.add("bg-light", "text-dark");
+                    }
+                });
+            });
+        });
     </script>
 </body>
 

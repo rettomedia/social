@@ -147,8 +147,8 @@
                             </div>
                             <div class="card-body d-flex p-0 mt-3">
                                 <button data-post-slug="{{post.slug}}" style="background: none !important;border: none !important"
-                                    class="d-flex like-button-main align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss me-2"><i
-                                        class="feather-thumbs-up text-white bg-primary-gradiant me-1 btn-round-xs font-xss"></i><span id="likes-count-{{post.slug}}">{{post.likes.count}} </span></button>
+                                    class="d-flex like-button-main align-items-center fw-600 {% if post.id in user_liked_posts %}bg-primary-gradiant text-white{% else %}bg-light text-dark{% endif %} lh-26 font-xssss me-2"><i
+                                        class="feather-thumbs-up {% if post.id in user_liked_posts %}bg-primary-gradiant text-white{% else %}bg-light text-dark{% endif %} me-1 btn-round-xs font-xss"></i><span id="likes-count-{{post.slug}}" class="text-dark">{{post.likes.count}} </span></button>
                                 <a
                                     class="d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"><i
                                         class="feather-message-circle text-dark text-grey-900 btn-round-sm font-lg"></i><span
