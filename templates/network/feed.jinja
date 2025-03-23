@@ -88,7 +88,7 @@
                                         class="shadow-sm rounded-circle w45">
                                 </figure>
                                 <h4 class="fw-700 text-grey-900 font-xssss mt-1">
-                                    <a class="text-dark">Retto</a>
+                                    <a href="/@Retto" class="text-dark">Retto</a>
                                     <span><img src="{% static 'images/admincheck.png' %}" style="width: 16px !important; height: 16px !important"></span>
                                     <span
                                         class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500"><i class="bi bi-pin-angle-fill"></i> Pinned Post</span>
@@ -104,7 +104,7 @@
                                       kullanırken karşılaştığınız <strong>"Page not found"</strong> dışındaki hataları <a href="/help-center/">Help Center</a> 
                                       bölümünden ticket açarak bizlere bildirebilirsiniz.
                                         <br><br>
-                                        Güncellemeleri <a href="/@retto">buraya</a> tıklayarak Retto hesabı üzerinden takip edebilirsiniz.
+                                        Güncellemeleri <a href="/@Retto">buraya</a> tıklayarak Retto hesabı üzerinden takip edebilirsiniz.
                                         <br><br>
                                         <i>Şimdiden teşekkür eder, iyi günler dileriz.</i>
                                     </a>
@@ -140,7 +140,7 @@
                                 <p class="fw-500 text-grey-500 lh-26 font-xssss w-100">
                                     <a class="text-dark" href="/posts/{{post.author.username}}/{{post.slug}}/">
                                         {{post.media}}
-                                        {{post.message|safe}}
+                                        {{post.message|linebreaksbr|safe}}
                                     </a>
                                 </p>
                             </div>
