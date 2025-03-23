@@ -117,8 +117,11 @@
                                 </figure>
                                 <h4 class="fw-700 text-grey-900 font-xssss mt-1">
                                     <a class="text-dark" href="/@{{post.author.username}}/">{{post.author.username}}</a>
+                                    {% if post.author.is_superuser %}
+                                    <img src="{% static 'images/main-logo.png' %}" style="width: 16px !important; height: 16px !important">
+                                    {% endif %}
                                     {% if post.author.is_staff %} <!-- Eğer kullanıcı staff ise -->
-                                    <span class="badge badge-pill badge-danger"><i class="bi bi-tools"></i></span>
+                                    <img src="{% static 'images/admincheck.png' %}" style="width: 16px !important; height: 16px !important">
                                     {% endif %}
                                     <span
                                         class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">{{post.edited_at}}</span>

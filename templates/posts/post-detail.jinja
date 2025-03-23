@@ -11,16 +11,11 @@
         border-radius: 10px;
     }
 
-    .responsive-video {
-        width: 50%; /* Bilgisayarda video küçük */
-        max-width: 100%;
-        height: auto;
-    }
-
-    /* Mobil cihazlar için video genişliğini büyüt */
-    @media (max-width: 768px) {
+    @media (min-width: 1024px) {
         .responsive-video {
-            width: 90%; /* Telefonlarda video büyük */
+            width: 640px !important; /* Sabit genişlik */
+            height: 480px !important; /* Sabit yükseklik */
+            object-fit: cover !important; /* Videonun orantılı şekilde kesilmesini sağlar */
         }
     }
 </style>
@@ -66,8 +61,11 @@
                                                     </figure>
                                                     <span
                                                         class="font-xssss text-grey-700 pt-2 mt-1 ps-2 fw-700 mb-0 me-auto text-dark">{{post.author.username}}  
-                                                        {% if post.author.is_staff %}
-                                                        <span class="badge badge-pill badge-danger"><i class="bi bi-tools"></i></span>
+                                                        {% if post.author.is_superuser %}
+                                                        <img src="{% static 'images/main-logo.png' %}" style="width: 16px !important; height: 16px !important">
+                                                        {% endif %}
+                                                        {% if post.author.is_staff %} <!-- Eğer kullanıcı staff ise -->
+                                                        <img src="{% static 'images/admincheck.png' %}" style="width: 16px !important; height: 16px !important">
                                                         {% endif %}
                                                         </span>
                                                     <small
@@ -141,8 +139,11 @@
                                                                 class="rounded-circle" />
                                                             {% endif %}
                                                             <p class="small mb-0 ms-2"><a href="/@{{comment.author.username}}" class="text-black">{{comment.author.username}}  </a>
-                                                            {% if comment.author.is_staff %}
-                                                            <span class="badge badge-pill badge-danger"><i class="bi bi-tools"></i></span>
+                                                            {% if comment.author.is_superuser %}
+                                                            <img src="{% static 'images/main-logo.png' %}" style="width: 16px !important; height: 16px !important">
+                                                            {% endif %}
+                                                            {% if comment.author.is_staff %} <!-- Eğer kullanıcı staff ise -->
+                                                            <img src="{% static 'images/admincheck.png' %}" style="width: 16px !important; height: 16px !important">
                                                             {% endif %}
                                                             </p>
                                                         </div>

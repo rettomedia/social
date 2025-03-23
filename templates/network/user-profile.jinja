@@ -37,9 +37,12 @@
                                     {% endif %}
                                 </figure>
                                 <h4 class="fw-700 font-sm mt-2 mb-lg-5 mb-4 pl-15">{{user.username}}  
-                                {% if user.is_staff %}
-                                <span class="badge badge-pill badge-danger"><i class="bi bi-tools"></i></span>
-                                {% endif %}
+                                {% if request.user.is_superuser %}
+                                    <img src="{% static 'images/main-logo.png' %}" style="width: 16px !important; height: 16px !important">
+                                    {% endif %}
+                                    {% if request.user.is_staff %} <!-- Eğer kullanıcı staff ise -->
+                                    <img src="{% static 'images/admincheck.png' %}" style="width: 16px !important; height: 16px !important">
+                                    {% endif %}
                                 <span
                                         class="fw-500 font-xssss text-grey-500 mt-1 mb-3 d-block">Last seen
                                         {{user.last_login}}</span>
@@ -112,9 +115,15 @@
                                     {% endif %}
                                 </figure>
                                 <h4 class="fw-700 text-grey-900 font-xssss mt-1"><a class="text-dark" href="/@{{post.author.username}}/">{{post.author.username}}</a> 
-                                {% if user.is_staff %}
-                                <span class="badge badge-pill badge-danger"><i class="bi bi-tools"></i></span>
-                                {% endif %}
+                                {% if post.author.is_superuser %}
+                                    <img src="{% static 'images/main-logo.png' %}" style="width: 16px !important; height: 16px !important">
+                                    {% endif %}
+                                    {% if post.author.is_superuser %}
+                                    <img src="{% static 'images/main-logo.png' %}" style="width: 16px !important; height: 16px !important">
+                                    {% endif %}
+                                    {% if post.author.is_staff %} <!-- Eğer kullanıcı staff ise -->
+                                    <img src="{% static 'images/admincheck.png' %}" style="width: 16px !important; height: 16px !important">
+                                    {% endif %}
                                 <span
                                         class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">{{post.edited_at}}</span>
                                 </h4>

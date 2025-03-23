@@ -46,8 +46,11 @@
                                         {% endif %}
                                     </figure>
                                     <h4 class="fw-700 font-sm mt-2 mb-lg-5 mb-4 pl-15">{{request.user.username}}
-                                    {% if request.user.is_staff %}
-                                    <span class="badge badge-pill badge-danger"><i class="bi bi-tools"></i></span>
+                                    {% if request.user.is_superuser %}
+                                    <img src="{% static 'images/main-logo.png' %}" style="width: 16px !important; height: 16px !important">
+                                    {% endif %}
+                                    {% if request.user.is_staff %} <!-- Eğer kullanıcı staff ise -->
+                                    <img src="{% static 'images/admincheck.png' %}" style="width: 16px !important; height: 16px !important">
                                     {% endif %}
                                     </h4>
                                     <div class="d-flex align-items-center justify-content-center position-absolute-md right-15 top-0 me-2">
@@ -110,9 +113,12 @@
                                     {% endif %}
                                 </figure>
                                 <h4 class="fw-700 text-grey-900 font-xssss mt-1">{{post.author.username}} 
-                                {% if request.user.is_staff %}
-                                <span class="badge badge-pill badge-danger"><i class="bi bi-tools"></i></span>
-                                {% endif %}
+                                {% if request.user.is_superuser %}
+                                    <img src="{% static 'images/main-logo.png' %}" style="width: 16px !important; height: 16px !important">
+                                    {% endif %}
+                                    {% if request.user.is_staff %} <!-- Eğer kullanıcı staff ise -->
+                                    <img src="{% static 'images/admincheck.png' %}" style="width: 16px !important; height: 16px !important">
+                                    {% endif %}
                                 <span
                                         class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">{{post.edited_at}}</span>
                                 </h4>

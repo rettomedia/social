@@ -6,5 +6,4 @@ CACHE
 db.sqlite3
 media
 *.jpg
-*.png
 *.jpeg
