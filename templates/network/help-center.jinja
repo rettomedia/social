@@ -8,7 +8,7 @@
 <div class="main-wrapper">
     {% include '../components/_nav.jinja' %}
 
-    <div class="main-content right-chat-active">
+    <div class="main-content">
             
             <div class="middle-sidebar-bottom">
                 <div class="middle-sidebar-left">
@@ -122,7 +122,9 @@
                  
             </div>            
         </div>
-
+    {% include '../components/_right-chat.jinja' %}
     {% include '../components/_footer.jinja' %}
 </div>
+
+{% include '../components/_chat-popup.jinja' %}
 {% endblock %}
