@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'account',
     'groups',
     'scripts',
+    'tickets',
     'crispy_forms',
     'crispy_bootstrap4',
 ]

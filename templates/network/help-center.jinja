@@ -8,34 +8,120 @@
 <div class="main-wrapper">
     {% include '../components/_nav.jinja' %}
 
-    <div class="main-content pt-0 bg-white ps-0 pe-0">
-
-
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-6 d-none d-xl-block p-0 vh-100 bg-image-contain bg-image-center bg-no-repeat"
-                    style="background-image: url({% static 'images/coming-soon.png' %});"></div>
-                <div class="col-xl-6 vh-100 align-items-center d-flex bg-white rounded-3 overflow-hidden">
-                    <div class="card shadow-none border-0 ps-lg--5 me-auto coming-soon-card">
-                        <div class="card-body rounded-0 text-left pt-md-5 mt-md-5 ps-0 pe-0">
-                            <div class="timer w-100 mb-3 bg-grey-time">
-                                <div class="time-count"><span class="text-time">00</span> <span
-                                        class="text-day">Day</span></div>
-                                <div class="time-count"><span class="text-time">00</span> <span
-                                        class="text-day">Hours</span> </div>
-                                <div class="time-count"><span class="text-time">00</span> <span
-                                        class="text-day">Min</span> </div>
-                                <div class="time-count"><span class="text-time">00</span> <span
-                                        class="text-day">Sec</span> </div>
+    <div class="main-content right-chat-active">
+            
+            <div class="middle-sidebar-bottom">
+                <div class="middle-sidebar-left">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-10">
+                            <div class="card w-100 border-0 p-0 rounded-3 overflow-hidden bg-image-contain bg-image-center" style="background-image: url(images/help-bg.png);">
+                                <div class="card-body p-md-5 p-4 text-center" style="background-color:rgba(0,85,255,0.8)">
+                                    <h2 class="fw-700 display2-size text-white display2-md-size lh-2">Welcome to the Retto Help Center!</h2>
+                                    <p class="font-xsss ps-lg-5 pe-lg-5 lh-28 text-grey-200">Find answers to common questions or get in touch with our support team. </p>
+                                    <div class="form-group w-lg-75 mt-4 border-light border p-1 bg-white rounded-3 ms-auto me-auto">
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <div class="form-group icon-input mb-0">
+                                                    <input disabled type="text" class="style1-input border-0 ps-5 font-xsss mb-0 text-grey-500 fw-500 bg-transparent" placeholder="Any other problem?">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <a href="/tickets/create" class="w-100 d-block btn bg-current text-white font-xssss fw-600 ls-3 style1-input p-0 border-0 text-uppercase ">Create a Ticket</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <h2 class="fw-700 text-grey-900 display3-size display4-md-size lh-2">We're under <span
-                                    class="text-primary">construction.</span> Check back for an update soon.</h2>
-                        </div>
+                            <div class="card w-100 border-0 shadow-none bg-transparent mt-5">
+                                <div id="accordion" class="accordion mb-0">
+                                  <div class="card shadow-xss">
+                                    <div class="card-header" id="headingOne">
+                                      <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                          What is Retto Social?
+                                        </button>
+                                      </h5>
+                                    </div>
+
+                                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                      <div class="card-body">
+                                        <p>
+                                            Retto Media is a global and libertarian social media platform. Developed based on the open-source philosophy, it aims to provide an independent and uncensored digital experience.
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="card shadow-xss">
+                                    <div class="card-header" id="headingTwo">
+                                      <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                          Is Retto Media free?
+                                        </button>
+                                      </h5>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                      <div class="card-body">
+                                        <p>
+                                            Yes, Retto is completely free. Our platform operates with no commercial intent and evolves through the contributions of volunteer developers.
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="card shadow-xss">
+                                    <div class="card-header" id="headingFour">
+                                      <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                          Are my data safe on Retto?
+                                        </button>
+                                      </h5>
+                                    </div>
+
+                                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                                      <div class="card-body">
+                                        <p>
+                                            Absolutely! User privacy and data security are among our top priorities. Your data are not shared with third parties, and maximum security measures are implemented.
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="card shadow-xss">
+                                    <div class="card-header" id="headingFive">
+                                      <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                          Is Retto Media open-source?
+                                        </button>
+                                      </h5>
+                                    </div>
+
+                                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+                                      <div class="card-body">
+                                        <p>Yes, Retto is an open-source project. Anyone can review our code, contribute to its development, and share their suggestions.</p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="card shadow-xss">
+                                    <div class="card-header" id="headingSix">
+                                      <h5 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                          How can I contribute to Retto Media?
+                                        </button>
+                                      </h5>
+                                    </div>
+
+                                    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+                                      <div class="card-body">
+                                        <p>You can contribute as a developer, designer, or content creator. Additionally, by using the platform and providing feedback, you can support its development process.</p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>               
                     </div>
                 </div>
-            </div>
+                 
+            </div>            
         </div>
-    </div>
 
     {% include '../components/_footer.jinja' %}
 </div>

@@ -27,7 +27,8 @@ urlpatterns = [
     path('posts/', include('posts.urls'), name='posts'),
     path('account/', include('account.urls'), name='account'),
     path('groups/', include('groups.urls'), name='groups'),
-    path('scripts/', include('scripts.urls'), name='scripts')
+    path('scripts/', include('scripts.urls'), name='scripts'),
+    path('tickets/', include('tickets.urls'), name='tickets')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
