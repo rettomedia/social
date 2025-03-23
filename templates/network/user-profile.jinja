@@ -37,10 +37,10 @@
                                     {% endif %}
                                 </figure>
                                 <h4 class="fw-700 font-sm mt-2 mb-lg-5 mb-4 pl-15">{{user.username}}  
-                                {% if request.user.is_superuser %}
+                                {% if user.is_superuser %}
                                     <img src="{% static 'images/main-logo.png' %}" style="width: 16px !important; height: 16px !important">
                                     {% endif %}
-                                    {% if request.user.is_staff %} <!-- Eğer kullanıcı staff ise -->
+                                    {% if user.is_staff %} <!-- Eğer kullanıcı staff ise -->
                                     <img src="{% static 'images/admincheck.png' %}" style="width: 16px !important; height: 16px !important">
                                     {% endif %}
                                 <span
