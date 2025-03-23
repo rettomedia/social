@@ -30,6 +30,14 @@
             background-color: #2c3b8d !important;
             border-color: #2c3b8d !important;
         }
+
+        .post-body-main p {
+            display: -webkit-box;
+            -webkit-line-clamp: 7; /* 10 satır limit */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
     </style>
 
     {% block styles %}
