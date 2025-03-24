@@ -6,16 +6,18 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def edit_post(request, post_slug):
     post = get_object_or_404(Post, slug=post_slug)
-    if request.method == 'POST':
-        form = PostForm(request.POST, instance=post)
-        if post.author == request.user:
+    if post.author == request.user:
+        if request.method == 'POST':
+            form = PostForm(request.POST, instance=post)
             if form.is_valid():
                 form.save()
                 return redirect('profile')
+            else:
+                return redirect('index')
         else:
-            return redirect('index')
+            form = PostForm(instance=post)
+        return render(request, 'account/edit-post.jinja', context={
+            'form':form
+        })
     else:
-        form = PostForm(instance=post)
-    return render(request, 'account/edit-post.jinja', context={
-        'form':form
-    })
+        return redirect('index')
