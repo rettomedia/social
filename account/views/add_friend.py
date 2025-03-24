@@ -10,7 +10,6 @@ def add_friend(request, username):
     to_user = get_object_or_404(CustomUser, username=username)
 
     if to_user != request.user:
-        # Önceden var olan arkadaşlık isteğini veya ilişkisini kontrol et
         existing_request = Friend.objects.filter(
             Q(from_user=request.user, to_user=to_user) | 
             Q(from_user=to_user, to_user=request.user)
