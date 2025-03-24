@@ -66,7 +66,7 @@
                                 <form enctype="multipart/form-data" action="{% url 'add_post' %}" method="post">
                                     {% csrf_token %}
                                     <textarea name="message" id="message"
-                                        class="h100 bor-0 w-100 rounded-xxl p-2 ps-5 font-xssss text-grey-500 fw-500 border-light-md theme-dark-bg"
+                                        class=" bor-0 w-100 rounded-xxl p-2 ps-5 font-xssss text-grey-500 fw-500 border-light-md theme-dark-bg"
                                         cols="30" rows="10" placeholder="What's on your mind?"></textarea>
                                     <span style="margin-top: 10px"
                                         class="w-50 h-25 d-flex align-items-center font-xssss fw-600 ls-1 text-grey-700 text-dark pe-4"><i
@@ -79,6 +79,14 @@
                             </div>
                             <div class="card-body d-flex p-0 mt-0">
                             </div>
+                        </div>
+
+                        <div>
+                        {% for message in messages %}
+                            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
                         </div>
 
                         <div class="card w-100 shadow-xss rounded-xxl border-0 p-4 mb-3">
