@@ -21,6 +21,8 @@ from django.conf.urls.static import static
 from django.conf.urls import handler404
 from django.views.defaults import page_not_found
 
+handler404 = 'network.views.custom_404'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('network.urls'), name='network'),
@@ -32,4 +34,3 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-handler404 = 'django.views.defaults.page_not_found'
