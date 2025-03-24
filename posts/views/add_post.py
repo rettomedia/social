@@ -40,6 +40,9 @@ def add_post(request):
         post_count = cache.get(cache_key, 0)
         if post_count >= 5:
             messages.error(request, "You have shared too much, please wait!")
+            
+            author.delete()
+            messages.error(request, "Your account has been deleted due to spamming!")
             return redirect('index')
 
         allowed_extensions = ['jpg', 'jpeg', 'png', 'gif', 'mp4', 'mov', 'avi', 'mkv', 'webm']
