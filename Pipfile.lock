@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "6f783055507bc0a5562401023819ccd2125a121e8636169454df51e23bc7ee64"
+            "sha256": "f36d40a77071ae50cb4d805f3fb20d27945a1d7c8e8a8550ccbc65d68b44e295"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -35,12 +35,12 @@
         },
         "django": {
             "hashes": [
-                "sha256:b983238dfa2eb2e6b27ebb815e14f0741cf186606eb7bcd857e740174017c50e",
-                "sha256:f9d4b7b87a9dae248d5f20cec940cf7290e07d508d6d8432e3c2cabf09b3b0ff"
+                "sha256:1323617cb624add820cb9611cdcc788312d250824f92ca6048fda8625514af2b",
+                "sha256:30de4ee43a98e5d3da36a9002f287ff400b43ca51791920bfb35f6917bfe041c"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.10'",
-            "version": "==5.0.13"
+            "version": "==5.1.7"
         },
         "django-autoslug": {
             "hashes": [
@@ -67,6 +67,14 @@
             "index": "pypi",
             "markers": "python_version >= '3.6' and python_version < '4'",
             "version": "==0.11.2"
+        },
+        "django-recaptcha": {
+            "hashes": [
+                "sha256:0d912d5c7c009df4e47accd25029133d47a74342dbd2a8edc2877b6bffa971a3",
+                "sha256:5316438f97700c431d65351470d1255047e3f2cd9af0f2f13592b637dad9213e"
+            ],
+            "index": "pypi",
+            "version": "==4.0.0"
         },
         "pillow": {
             "hashes": [
@@ -153,11 +161,11 @@
         },
         "tzdata": {
             "hashes": [
-                "sha256:2674120f8d891909751c38abcdfd386ac0a5a1127954fbc332af6b5ceae07efd",
-                "sha256:9068bc196136463f5245e51efda838afa15aaeca9903f49050dfa2679db4d252"
+                "sha256:1a403fada01ff9221ca8044d701868fa132215d84beb92242d9acd2147f667a8",
+                "sha256:b60a638fcc0daffadf82fe0f57e53d06bdec2f36c4df66280ae79bce6bd6f2b9"
             ],
-            "markers": "sys_platform == 'win32'",
-            "version": "==2024.1"
+            "markers": "python_version >= '2'",
+            "version": "==2025.2"
         }
     },
     "develop": {}

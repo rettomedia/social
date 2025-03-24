@@ -79,6 +79,17 @@
                         {% endfor %}
                         {% endif %}
 
+                        <div class="form-group">
+                            {{ form.captcha }} 
+                            {% if form.captcha.errors %}
+                                <ul class="errorlist">
+                                    {% for error in form.captcha.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                                            <br>
                         <div class="form-group mb-1"><button type="submit"
                                 class="form-control text-center style2-input text-white fw-600 bg-dark border-0 p-0 ">Register</button>
                         </div>

@@ -26,6 +26,8 @@ environ.Env.read_env('.env')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
+RECAPTCHA_PUBLIC_KEY = env('RECAPTCHA_PUBLIC_KEY')
+RECAPTCHA_PRIVATE_KEY = env('RECAPTCHA_PRIVATE_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -54,6 +56,7 @@ INSTALLED_APPS = [
     'tickets',
     'crispy_forms',
     'crispy_bootstrap4',
+    'django_recaptcha',
 ]
 
 MIDDLEWARE = [
