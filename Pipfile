@@ -11,6 +11,7 @@ django-autoslug = "*"
 django-crispy-forms = "*"
 crispy-bootstrap4 = "*"
 django-recaptcha = "*"
+six = "*"
 
 [dev-packages]
 

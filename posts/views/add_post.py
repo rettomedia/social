@@ -5,6 +5,8 @@ from datetime import timedelta
 from django.core.cache import cache
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.auth import logout
+from django.db import IntegrityError, transaction
 
 def get_client_ip(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
@@ -38,12 +40,26 @@ def add_post(request):
 
         cache_key = f"post_limit_{ip}"
         post_count = cache.get(cache_key, 0)
+        
         if post_count >= 5:
             messages.error(request, "You have shared too much, please wait!")
             
-            author.delete()
-            messages.error(request, "Your account has been deleted due to spamming!")
+            try:
+                with transaction.atomic():
+                    author.delete()
+                    logout(request)
+                    messages.error(request, "Your account has been deleted due to spamming!")
+            except IntegrityError as e:
+                messages.error(request, "There was an error deleting your account.")
+                print(f"Error deleting user account: {e}")
+            except Exception as e:
+                messages.error(request, f"An unexpected error occurred: {e}")
+                print(f"Unexpected error: {e}")
+
             return redirect('index')
+
+        post_count += 1
+        cache.set(cache_key, post_count, timeout=3600)
 
         allowed_extensions = ['jpg', 'jpeg', 'png', 'gif', 'mp4', 'mov', 'avi', 'mkv', 'webm']
         allowed_mime_types = ['image/jpeg', 'image/png', 'image/gif', 
@@ -61,8 +77,6 @@ def add_post(request):
                 return redirect('index')
 
         Post.objects.create(author=author, message=message, image=image)
-
-        cache.set(cache_key, post_count + 1, timeout=60)
 
         messages.success(request, "Post shared successfully!")
         return redirect('index')
