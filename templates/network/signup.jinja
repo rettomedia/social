@@ -60,12 +60,22 @@
                                 placeholder="Confirm Password">
                             <i class="font-sm ti-lock text-grey-500 pe-0"></i>
                         </div>
+                        <div class="form-group icon-input mb-3">
+                            <i class="font-sm ti-map text-grey-500 pe-0"></i>
+                            <select name="region" class="style2-input ps-5 form-control text-grey-900 font-xsss fw-600">
+                                <option value="">Select Your Region</option>
+                                {% for region in regions %}
+                                    <option value="{{ region.id }}">{{ region.region }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
                         <div class="form-check text-left mb-3">
                             <input type="checkbox" name="agree" class="form-check-input mt-2" id="agree">
                             <label class="form-check-label font-xsss text-grey-500" for="agree">Accept Term and
                                 Conditions</label>
                             <!-- <a href="#" class="fw-600 font-xsss text-grey-700 mt-1 float-right">Forgot your Password?</a> -->
                         </div>
+
 
                         {% if form.errors %}
                         {% for field, error_list in form.errors.items %}

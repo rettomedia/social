@@ -5,6 +5,7 @@ from django.utils.timezone import now
 from datetime import timedelta
 from django.core.exceptions import ValidationError
 from django.core.cache import cache
+from network.models import Regions
 
 
 class Post(models.Model):
@@ -15,6 +16,8 @@ class Post(models.Model):
     writed_at = models.DateTimeField(auto_now_add=True)
     edited_at = models.DateTimeField(auto_now=True)
     ip_address = models.GenericIPAddressField(blank=True, null=True)
+
+    region = models.ForeignKey(Regions, on_delete=models.CASCADE, blank=True, null=True)
 
     class Meta:
         db_table = 'post'

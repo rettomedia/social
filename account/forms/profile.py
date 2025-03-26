@@ -6,4 +6,4 @@ class ProfileForm(UserChangeForm):
     password = None
     class Meta:
         model = CustomUser
-        fields = ('avatar','username','email','bio','location')
+        fields = ('avatar','username','email','region','bio','location')

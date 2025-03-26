@@ -4,10 +4,12 @@ from django import forms
 import re
 from django_recaptcha.fields import ReCaptchaField
 from django.conf import settings
+from network.models import Regions
 
 
 class SignupForm(UserCreationForm):
     agree = forms.BooleanField(required=False)
+    region = forms.ModelChoiceField(queryset=Regions.objects.all(), required=True, empty_label="Select Your Region")
     if settings.RECAPTCHA_PUBLIC_KEY:
         captcha = ReCaptchaField(required=True)
     else:
@@ -15,7 +17,7 @@ class SignupForm(UserCreationForm):
 
     class Meta(UserCreationForm.Meta):
         model = CustomUser
-        fields = ('username', 'email', 'password1', 'password2','captcha')
+        fields = ('username', 'email', 'password1', 'password2','region','captcha')
 
     def clean_username(self):
         username = self.cleaned_data.get("username")

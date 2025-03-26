@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from .regions import Regions
 
 
 class CustomUser(AbstractUser):
@@ -9,6 +10,7 @@ class CustomUser(AbstractUser):
     background_image = models.ImageField(upload_to='background_images/', blank=True, null=True)
     location = models.CharField(max_length=100, blank=True, null=True)
     is_blocked = models.BooleanField(default=False)
+    region = models.ForeignKey(Regions, on_delete=models.CASCADE, blank=True, null=True)
 
 
     class Meta:
