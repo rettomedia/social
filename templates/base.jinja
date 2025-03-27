@@ -14,7 +14,6 @@
 
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/main-logo.png' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
     <style>
         .badge-danger {
             background-color: #dc3545 !important;
@@ -108,6 +107,22 @@
                     }
                 });
             });
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var searchInput = document.getElementById("search_user");
+
+            searchInput.addEventListener("keypress", function(event) {
+                if (event.key === "Enter") {
+                    event.preventDefault(); // Sayfa yenilenmesini önle
+                    var query = searchInput.value.trim(); // Boşlukları temizle
+                    if (query) {
+                        window.location.href = "/@" + encodeURIComponent(query);
+                    }
+                }
+            });
+
+            event.preventDefault();
         });
     </script>
 </body>

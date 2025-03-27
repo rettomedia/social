@@ -7,7 +7,7 @@
             <span class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xxl logo-text mb-0">Retto </span>
         </a>
         <a href="#" class="mob-menu ms-auto me-2 chat-active-btn"><i
-                class="feather-message-circle text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
+                class="feather-book text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
         <a href="#" class="me-2 menu-search-icon mob-menu"><i
                 class="feather-search text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
         <button class="nav-menu me-0 ms-2"></button>
@@ -16,7 +16,7 @@
     <form class="float-left header-search">
         <div class="form-group mb-0 icon-input">
             <i class="feather-search font-sm text-grey-400"></i>
-            <input type="text" placeholder="Start typing to search.." id="search" 
+            <input type="text" placeholder="Search in posts.." id="search" 
                 {% if request.path == "/" %}
                 name="search" 
                 {% elif request.path == "/account/friend-list/" %} 
@@ -34,7 +34,7 @@
         aria-expanded="false"></a>
     {% if request.user.is_authenticated %}
     <a href="#" class="p-2 text-center ms-3 menu-icon chat-active-btn"><i
-            class="feather-message-square font-xl text-current"></i></a>
+            class="feather-book font-xl text-current"></i></a>
 
     <a href="/account/settings/" class="p-0 ms-3 menu-icon">
         {% if request.user.avatar %}
