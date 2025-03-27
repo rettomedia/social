@@ -114,8 +114,8 @@
 
             searchInput.addEventListener("keypress", function(event) {
                 if (event.key === "Enter") {
-                    event.preventDefault(); // Sayfa yenilenmesini önle
-                    var query = searchInput.value.trim(); // Boşlukları temizle
+                    event.preventDefault(); 
+                    var query = searchInput.value.trim();
                     if (query) {
                         window.location.href = "/@" + encodeURIComponent(query);
                     }
