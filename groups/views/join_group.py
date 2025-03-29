@@ -11,6 +11,6 @@ def join_group(request, group_slug):
             group=group
         )
 
-        return redirect('group_index')
+        return redirect(request.META.get("HTTP_REFERER", "/"))
     else:
-        return redirect('group_index')
+        return redirect(request.META.get("HTTP_REFERER", "/"))

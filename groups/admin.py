@@ -4,3 +4,4 @@ from groups.models import *
 # Register your models here.
 admin.site.register(Group)
 admin.site.register(Member)
+admin.site.register(GroupPost)
