@@ -76,7 +76,7 @@ def add_post(request):
                 messages.error(request, "You can only upload photos or videos!")
                 return redirect('index')
 
-        Post.objects.create(author=author, message=message, image=image)
+        Post.objects.create(author=author, message=message, image=image, region=author.region)
 
         messages.success(request, "Post shared successfully!")
         return redirect('index')
