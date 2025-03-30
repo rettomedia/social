@@ -6,6 +6,7 @@ from datetime import timedelta
 from django.core.exceptions import ValidationError
 from django.core.cache import cache
 from network.models import Regions
+import re
 
 
 class Post(models.Model):
@@ -23,6 +24,14 @@ class Post(models.Model):
         db_table = 'post'
         verbose_name = 'Post'
         verbose_name_plural = 'Posts'
+
+    def clean(self):
+        cleaned_content = re.sub(r'\n{3,}', '\n\n', self.content)
+        
+        if self.content != cleaned_content:
+            raise ValidationError("Çok fazla boş satır ekleyemezsiniz. Lütfen içeriği düzenleyin.")
+
+        self.content = cleaned_content 
 
     def save(self, *args, **kwargs):
         if self.author:

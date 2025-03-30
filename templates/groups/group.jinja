@@ -1,5 +1,6 @@
 {% extends 'base.jinja' %}
 {% load static %}
+{% load custom_filters %}
 {% load crispy_forms_tags %}
 {% block title %}{{group.title}} - Groups{% endblock %}
 
@@ -127,9 +128,9 @@
                             </div>
                             <div class="card-body post-body-main p-0 me-lg-5">
                                 <p class="fw-500 text-grey-500 lh-26 font-xssss w-100">
-                                    <a class="text-dark" href="/posts/{{post.author.username}}/{{post.slug}}/">
+                                    <a class="text-dark">
                                         {{post.media}}
-                                        {{post.message|linebreaksbr}}
+                                        {{post.message|limit_linebreaks|linebreaksbr}}
                                     </a>
                                 </p>
                             </div>

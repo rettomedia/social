@@ -7,6 +7,8 @@ from django.core.exceptions import ValidationError
 from django.core.cache import cache
 from groups.models import Group
 
+import re
+
 
 class GroupPost(models.Model):
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, blank=True, null=True)
@@ -23,6 +25,14 @@ class GroupPost(models.Model):
         db_table = 'group_post'
         verbose_name = 'Group Post'
         verbose_name_plural = 'Group Posts'
+
+    def clean(self):
+        cleaned_content = re.sub(r'\n{3,}', '\n\n', self.content)
+        
+        if self.content != cleaned_content:
+            raise ValidationError("Çok fazla boş satır ekleyemezsiniz. Lütfen içeriği düzenleyin.")
+
+        self.content = cleaned_content 
 
     def save(self, *args, **kwargs):
         if self.author:
