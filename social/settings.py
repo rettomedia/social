@@ -47,6 +47,7 @@ CSRF_COOKIE_SAMESITE = None
 # Application definition
 
 INSTALLED_APPS = [
+    'pwa',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -63,6 +64,27 @@ INSTALLED_APPS = [
     'crispy_bootstrap4',
     'django_recaptcha',
 ]
+
+PWA_APP_NAME = "Retto"
+PWA_APP_DESCRIPTION = "Social network for modern web."
+PWA_APP_THEME_COLOR = "#0A74DA"  # Tema rengi
+PWA_APP_BACKGROUND_COLOR = "#ffffff"  # Arka plan rengi
+PWA_APP_ICONS = [
+    {
+        "src": "/assets/images/main-logo.png",
+        "sizes": "192x192",
+        "type": "image/png",
+    },
+    {
+        "src": "/assets/images/main-logo.png",
+        "sizes": "512x512",
+        "type": "image/png",
+    },
+]
+
+PWA_APP_ORIENTATION = "portrait"
+PWA_APP_SCOPE = "/"
+PWA_APP_START_URL = "/"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

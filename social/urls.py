@@ -20,6 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import handler404
 from django.views.defaults import page_not_found
+from pwa import views as pwa_views
 
 handler404 = 'network.views.custom_404'
 
@@ -30,7 +31,9 @@ urlpatterns = [
     path('account/', include('account.urls'), name='account'),
     path('groups/', include('groups.urls'), name='groups'),
     path('scripts/', include('scripts.urls'), name='scripts'),
-    path('tickets/', include('tickets.urls'), name='tickets')
+    path('tickets/', include('tickets.urls'), name='tickets'),
+    path("manifest.json", pwa_views.manifest, name="pwa-manifest"),
+    path("service-worker.js", pwa_views.service_worker, name="pwa-service-worker"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

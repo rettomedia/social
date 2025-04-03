@@ -12,6 +12,7 @@ django-crispy-forms = "*"
 crispy-bootstrap4 = "*"
 django-recaptcha = "*"
 six = "*"
+django-pwa = "*"
 
 [dev-packages]
 
