@@ -26,12 +26,12 @@ class Post(models.Model):
         verbose_name_plural = 'Posts'
 
     def clean(self):
-        cleaned_content = re.sub(r'\n{3,}', '\n\n', self.content)
+        cleaned_content = re.sub(r'\n{3,}', '\n\n', self.message)
         
-        if self.content != cleaned_content:
+        if self.message != cleaned_content:
             raise ValidationError("Çok fazla boş satır ekleyemezsiniz. Lütfen içeriği düzenleyin.")
 
-        self.content = cleaned_content 
+        self.message = cleaned_content 
 
     def save(self, *args, **kwargs):
         if self.author:
