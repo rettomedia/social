@@ -52,7 +52,7 @@
                                     <a href="{% url 'cancel_request' user.username %}"
                                     class="bg-danger p-3 z-index-1 rounded-3 text-white font-xsssss text-uppercase fw-700 ls-3">Cancel Request</a>
                                     {% elif is_friend %}
-                                    <a class="bg-success p-3 z-index-1 rounded-3 text-white font-xsssss text-uppercase fw-700 ls-3">Message</a>
+                                    <a class="bg-success p-3 z-index-1 rounded-3 text-white font-xsssss text-uppercase fw-700 ls-3">Friend</a>
                                     {% else %}
                                     <a href="/account/add-friend/{{user.username}}/"
                                     class="bg-success p-3 z-index-1 rounded-3 text-white font-xsssss text-uppercase fw-700 ls-3">Add Friend</a>
