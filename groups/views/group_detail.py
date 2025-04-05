@@ -6,7 +6,7 @@ from groups.models import Group, Member, GroupPost
 @login_required
 def group(request, group_slug):
     group = get_object_or_404(Group, slug=group_slug)
-    posts = GroupPost.objects.filter(group=group)
+    posts = GroupPost.objects.filter(group=group).order_by('-id')
 
     if group.is_public:
         members = Member.objects.filter(group=group).values_list('user', flat=True)
