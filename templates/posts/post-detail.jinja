@@ -1,5 +1,6 @@
 {% extends 'base.jinja' %}
 {% load static %}
+{% load custom_filters %}
 {% block title %}{{post.message}} - {{post.author.username}}{% endblock %}
 
 {% block styles %}
@@ -76,7 +77,7 @@
                                                 <p class="text-grey-600 mb-4 font-xsss lh-28 fw-500 mt-3">
                                                     <div class="card" style="border: none !important">
                                                         <div class="card-body">
-                                                            <p>{{ post.message|linebreaksbr }}</p>
+                                                            <p>{{ post.message|linebreaksbr|mention_to_link|safe }}</p>
                                                         </div>
                                                         
                                                         {% if post.image %}
