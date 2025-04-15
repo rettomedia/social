@@ -1,1 +1,1 @@
-from .custom_filters import limit_linebreaks
+from .custom_filters import limit_linebreaks, mention_to_link

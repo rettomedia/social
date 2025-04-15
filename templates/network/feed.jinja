@@ -1,5 +1,6 @@
 {% extends 'base.jinja' %}
 {% load static %}
+{% load filters %}
 {% block title %}Feed{% endblock %}
 
 {% block content %}
@@ -179,11 +180,13 @@ You can follow updates by clicking <a href="/@Retto">here</a> on the Retto accou
 
                             </div>
                             <div class="card-body post-body-main p-0 me-lg-5">
-                                <p class="fw-500 text-grey-500 lh-26 font-xssss w-100">
+                                <p class="fw-500 text-dark lh-26 font-xssss w-100">
                                     <a class="text-dark" href="/posts/{{post.author.username}}/{{post.slug}}/">
                                         {{post.media}}
-                                        {{post.message|linebreaksbr}}
                                     </a>
+                                    <span class="text-dark">
+                                        {{post.message|linebreaksbr|mention_to_link|safe}}
+                                    </span>
                                 </p>
                             </div>
                             <div class="card-body d-block p-0">
