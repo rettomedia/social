@@ -124,7 +124,7 @@
                                             <div class="kart mb-4" style="border-radius: 25px;">
                                                 <div class="kart-body">
                                                     <p>
-                                                        {{comment.message}}
+                                                        {{comment.message|linebreaksbr|mention_to_link|safe}}
                                                     </p>
 
                                                     <div class="d-flex justify-content-between">
