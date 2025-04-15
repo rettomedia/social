@@ -1,1 +1,1 @@
-from .filters import mention_to_link
+from .custom_filters import mention_to_link
