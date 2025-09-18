@@ -1,8 +1,8 @@
 *.css linguist-detectable=false
 
-*.jinja linguist-detectable=false
+*.jinja linguist-detectable=true
 
-*.js linguist-detectable=false
+*.js linguist-detectable=true
 
 *.html linguist-detectable=false
 
