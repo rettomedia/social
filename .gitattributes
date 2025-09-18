@@ -1,6 +1,6 @@
 *.css linguist-detectable=false
 
-*.jinja linguist-detectable=true
+*.jinja linguist-detectable=false
 
 *.js linguist-detectable=true
 
