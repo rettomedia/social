@@ -1,9 +1,0 @@
-*.css linguist-detectable=false
-
-*.jinja linguist-detectable=false
-
-*.js linguist-detectable=true
-
-*.html linguist-detectable=false
-
-*.python linguist-detectable=true

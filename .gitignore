@@ -1,9 +1,4 @@
-__pycache__
+/node_modules/
+/public/build/
+
 .DS_Store
-*.pyc
-CACHE
-.env
-db.sqlite3
-media
-*.jpg
-*.jpeg
