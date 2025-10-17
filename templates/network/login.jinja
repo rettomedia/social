@@ -1,0 +1,129 @@
+{% extends 'base.jinja' %}
+{% load static %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="preloader"></div>
+
+<div class="main-wrap">
+    <div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true" data-backdrop="false">
+        <div class="modal-dialog">
+            <div class="modal-content" style="border-color: #fafafa !important">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="welcomeModalLabel">Welcome Back!</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Kapat">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Retto is active with version 1.0
+                    <br><br>
+                    Added features;
+                    <ul>
+                        <li>- Added PWA support! (Android/IOS/Desktop)</li>
+                        <li>- Region selection feature</li>
+                        <li>- Community system</li>
+                        <li>- Group system</li>
+                        <li>- Interface bugs fixed</li>
+                        <li>- Security vulnerabilities have been fixed</li>
+                        <li>- Added bot spam protection</li>
+                    </ul>
+                    <br>
+                    You can go to Help Center for your feedback.
+                    <br><br>
+                    <div id="install-app-container">
+                        <div class="form-group mb-1"><button id="install-app-button"
+                                class="form-control w-50 text-left style2-input text-white fw-600 bg-primary-gradiant border-0 p-0 mb-2">
+                                &nbsp;&nbsp;&nbsp;<i class="bi bi-download" style="font-size:large;"></i>&nbsp;&nbsp;&nbsp; <span class="text-xssss text-light">Install Retto as PWA</span></button></div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary text-light" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nav-header bg-transparent shadow-none border-0">
+        <div class="nav-top w-100">
+            <a href="/">
+            <img width="50" height="50" src="{% static 'images/main-logo.png' %}">
+            <span
+                    class="d-inline-block fredoka-font ls-3 fw-600 text-current font-xxl logo-text mb-0">Retto
+                </span> </a>
+            <a href="#" class="mob-menu ms-auto me-2 chat-active-btn"><i
+                    class="feather-message-circle text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
+            <a href="#" class="me-2 menu-search-icon mob-menu"><i
+                    class="feather-search text-grey-900 font-sm btn-round-md bg-greylight"></i></a>
+            <button class="nav-menu me-0 ms-2"></button>
+
+            <a class="d-none d-lg-block fw-500 text-white font-xsss p-3 ms-auto w100 text-center lh-20 rounded-xl"></a>
+            <a class="d-none d-lg-block fw-500 text-white font-xsss p-3 ms-2 w100 text-center lh-20 rounded-xl"></a>
+
+        </div>
+
+
+    </div>
+
+    <div class="row">
+        <div class="col-xl-5 d-none d-xl-block p-0 vh-100 bg-image-cover bg-no-repeat"
+            style="background-image: url({% static 'images/login-bg.jpg' %})"></div>
+        <div class="col-xl-7 vh-100 align-items-center d-flex bg-white rounded-3 overflow-hidden">
+            <div class="card shadow-none border-0 ms-auto me-auto login-card">
+                <div class="card-body rounded-0 text-left">
+                    <h2 class="fw-700 display1-size display2-md-size mb-3">Login into <br>your account</h2>
+                    <form method="post" action="{% url 'login' %}">
+                        {% csrf_token %}
+                        <div class="form-group icon-input mb-3">
+                            <i class="font-sm ti-user text-grey-500 pe-0"></i>
+                            <input type="text" name="username"
+                                class="style2-input ps-5 form-control text-grey-900 font-xsss fw-600"
+                                placeholder="Your Username">
+                        </div>
+                        <div class="form-group icon-input mb-1">
+                            <input name="password" type="Password" class="style2-input ps-5 form-control text-grey-900 font-xss ls-3"
+                                placeholder="Password">
+                            <i class="font-sm ti-lock text-grey-500 pe-0"></i>
+                        </div>
+                        <br>
+
+                        {% if form.errors %}
+                        {% for field, error_list in form.errors.items %}
+                        {% for error in error_list %}
+                        <div class="alert alert-danger">
+                            {{ error }}
+                        </div>
+                        {% endfor %}
+                        {% endfor %}
+                        {% endif %}
+
+                        <div class="form-group mb-1"><button type="submit"
+                                class="form-control text-center style2-input text-white fw-600 bg-dark border-0 p-0 ">Login</button>
+                        </div>
+                    </form>
+
+                    <div class="col-sm-12 p-0 text-left">
+                        <h6 class="text-grey-500 font-xsss fw-500 mt-0 mb-0 lh-32">Dont have account <a
+                                href="/signup/" class="fw-700 ms-1">Register</a></h6>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+        $(document).ready(function() {
+            $('#welcomeModal').modal({
+                show: true,
+                backdrop: false,  
+                keyboard: true 
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,94 @@
+{% load static %}
+
+<!-- right chat -->
+<div class="right-chat nav-wrap mt-2 right-scroll-bar">
+    <div class="middle-sidebar-right-content bg-white shadow-xss rounded-xxl">
+
+        <!-- loader wrapper -->
+        <div class="preloader-wrap p-3">
+            <div class="box shimmer">
+                <div class="lines">
+                    <div class="line s_shimmer"></div>
+                    <div class="line s_shimmer"></div>
+                    <div class="line s_shimmer"></div>
+                    <div class="line s_shimmer"></div>
+                </div>
+            </div>
+            <div class="box shimmer mb-3">
+                <div class="lines">
+                    <div class="line s_shimmer"></div>
+                    <div class="line s_shimmer"></div>
+                    <div class="line s_shimmer"></div>
+                    <div class="line s_shimmer"></div>
+                </div>
+            </div>
+            <div class="box shimmer">
+                <div class="lines">
+                    <div class="line s_shimmer"></div>
+                    <div class="line s_shimmer"></div>
+                    <div class="line s_shimmer"></div>
+                    <div class="line s_shimmer"></div>
+                </div>
+            </div>
+        </div>
+        <!-- loader wrapper -->
+
+        <div class="section full pe-3 ps-4 pt-4 position-relative feed-body">
+            <ul class="list-group list-group-flush">
+                <li
+                    class="bg-transparent list-group-item no-icon pe-0 ps-0 pt-2 pb-2 border-0 d-flex align-items-center">
+                    <h3 class="fw-700 mb-0 mt-0">
+                        <div id="install-app-container">
+                        <div class="form-group mb-1"><button id="install-app-button"
+                                class="form-control text-left style2-input text-white fw-600 bg-primary-gradiant border-0 p-0 mb-2">
+                                &nbsp;&nbsp;&nbsp;<i class="bi bi-download" style="font-size:large;"></i>&nbsp;&nbsp;&nbsp; <span class="text-xssss text-light">Install Retto as PWA</span></button></div>
+                        </div>
+                        <hr>
+                        <a class="font-xssss text-grey-500 d-block"><strong class="text-grey-600">retto.social</strong> is a social platform designed for the modern web, with freedom and privacy as a priority.</a>
+                    </h3>
+                </li>
+            </ul>
+            <br>
+            <h4 class="font-xsssss text-grey-500 text-uppercase fw-700 ls-3">Your Info</h4>
+            <ul class="list-group list-group-flush">
+                <li
+                    class="bg-transparent list-group-item no-icon pe-0 ps-0 pt-2 pb-2 border-0 d-flex align-items-center">
+                    <figure class="avatar float-left mb-0 me-2">
+                        <img src="{% if request.user.avatar %}{{request.user.avatar.url}}{%else%}{% static 'images/blank-profile.jpg' %}{%endif%}" style="border-radius: 100%;" alt="image"
+                            class="w35">
+                    </figure>
+                    <h3 class="fw-700 mb-0 mt-0">
+                        <a class="font-xssss text-grey-600 d-block text-dark">{{request.user.username}}</a>
+                        <span class="font-xsssss">Account Status: <span>
+                        {% if request.user.is_superuser %}
+                        <span style="color: rgb(192, 92, 92);">Admin</span>
+                        {% elif request.user.is_staff %}
+                        Staff
+                        {% else %}
+                        Member
+                        {% endif %}
+                        </span></span>
+                    </h3>
+                </li>
+            </ul>
+            <br>
+            <h4 class="font-xsssss text-grey-500 text-uppercase fw-700 ls-3">Your Groups</h4>
+            {% for memberr in my_groups %}
+                <ul class="list-group list-group-flush">
+                <li
+                    class="bg-transparent list-group-item no-icon pe-0 ps-0 pt-2 pb-2 border-0 d-flex align-items-center">
+                    <figure class="avatar float-left mb-0 me-2">
+                        <img src="{% if memberr.group.image %}{{memberr.group.image.url}}{%else%}{% static 'images/blank-group.png' %}{%endif%}" style="border-radius: 20%;" alt="image"
+                            class="w35">
+                    </figure>
+                    <h3 class="fw-700 mb-0 mt-0">
+                        <a class="font-xssss text-grey-600 d-block text-dark" href="/groups/group/{{memberr.group.slug}}">{{memberr.group.title}}</a>
+                    </h3>
+                </li>
+            </ul>
+            {% empty %}
+                <li>No groups joined yet.</li>
+            {% endfor %}
+        </div>
+    </div>
+</div>
